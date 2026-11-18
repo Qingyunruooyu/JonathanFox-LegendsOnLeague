@@ -46,6 +46,7 @@ func deserialize_and_merge(serialized: Dictionary) -> void:
 
 
 func _on_desert_rose_wave_start(_p_player) -> void:
+	._on_desert_rose_wave_start(_p_player)
 	_main = RunData.get_tree().current_scene
 	_player_index = _p_player.player_index
 	
@@ -88,6 +89,8 @@ func _on_timer_timeout() -> void:
 	args.crit_damage = 2.0
 	args.burning_data = WeaponService.init_burning_data(BurningData.new(), _player_index)
 	args.from_player_index = _player_index
+	args.from = _player
+	args.damage_tracking_key_hash = Utils.character_dr_ocean_scourge_hash
 	
 	WeaponService.explode(_current_exploding_effect, args)
 	

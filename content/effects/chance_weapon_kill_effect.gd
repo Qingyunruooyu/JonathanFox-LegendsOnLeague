@@ -7,8 +7,10 @@ enum Type {MELEE, RANGED, BOTH}
 export (float) var chance = 1.0
 export (Array, Array) var stats_to_add = [["materials", 1]]
 export (Type) var weapon_type = Type.BOTH
+export (String) var tracking_key = ""
 
 var _stat_hashes = []
+var _tracking_key_hash: int = 0
 
 
 static func get_id() -> String:
@@ -43,6 +45,8 @@ func _on_desert_rose_wave_start(player) -> void:
 	for stat in stats_to_add:
 		_stat_hashes.push_back([stat[0], Keys.generate_hash(stat[0]), stat[1]])
 	
+	_tracking_key_hash = Keys.generate_hash(tracking_key) if tracking_key != "" else 0
+	
 	for weapon_instance in player.current_weapons:
 		if weapon_instance is MeleeWeapon:
 			if weapon_type == Type.MELEE or weapon_type == Type.BOTH:
@@ -65,6 +69,8 @@ func _on_player_killed_something(_thing_killed) -> void:
 		for stat in _stat_hashes:
 			if stat[0] == "materials":
 				RunData.add_gold(stat[2], _player_index)
+				if _tracking_key_hash != 0:
+					RunData.add_tracked_value(_player_index, _tracking_key_hash, stat[2], 1)
 			else:
 				RunData.add_stat(stat[1], stat[2], _player_index)
 

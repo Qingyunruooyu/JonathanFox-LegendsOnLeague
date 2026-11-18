@@ -24,3 +24,4 @@ func add_resources():
 	ItemService.invalidate_weapons_cache()
 	ProgressData.refresh_active_update_data()
 	ProgressData._append_without_duplicates(ItemService.effects, effects)
+	RunData.init_tracked_items.merge(Utils.convert_dictionary_to_hash(tracked_items))

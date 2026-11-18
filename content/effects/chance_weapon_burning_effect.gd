@@ -36,7 +36,7 @@ func _on_desert_rose_wave_start(player) -> void:
 	for weapon_instance in player.current_weapons:
 		if weapon_instance is MeleeWeapon:
 			if weapon_type == Type.MELEE or weapon_type == Type.BOTH:
-				connect_safely(weapon_instance._hitbox, "hit_something", self, "_on_player_hit_something")
+				connect_safely(weapon_instance._hitbox, "hit_something", self, "_on_player_hit_something", [weapon_instance._hitbox])
 		elif weapon_instance is RangedWeapon:
 			if weapon_type == Type.RANGED or weapon_type == Type.BOTH:
 				connect_safely(weapon_instance._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot")
@@ -47,10 +47,10 @@ func _on_player_projectile_shot(projectile) -> void:
 		var hitbox = projectile._hitbox
 		
 		if hitbox and is_instance_valid(hitbox):
-			connect_safely(hitbox, "hit_something", self, "_on_player_hit_something")
+			connect_safely(hitbox, "hit_something", self, "_on_player_hit_something", [hitbox])
 
 
-func _on_player_hit_something(_thing_hit, _damage_dealt) -> void:
+func _on_player_hit_something(_thing_hit, _damage_dealt, source_hitbox) -> void:
 	if chance >= 1 or randf() < chance:
 		if not _thing_hit.dead:
 			var burning_data = BurningData.new()
@@ -58,6 +58,7 @@ func _on_player_hit_something(_thing_hit, _damage_dealt) -> void:
 			burning_data.damage = _damage_dealt
 			burning_data.chance = 1
 			burning_data.spread = 0
+			burning_data.from = source_hitbox.from
 			
 			_thing_hit.apply_burning(burning_data)
 

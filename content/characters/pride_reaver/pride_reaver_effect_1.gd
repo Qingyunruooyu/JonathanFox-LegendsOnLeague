@@ -58,6 +58,7 @@ func _on_enemy_died(enemy, _args) -> void:
 		killed_enemies.push_back(enemy_name)
 		for stat in _stats_add_hashes:
 			RunData.add_stat(stat[0], stat[1], _player_index)
+			RunData.add_tracked_value(_player_index, Utils.character_dr_pride_reaver_hash, stat[1])
 		
 		var killed_effect = RunData.get_player_effect(Utils.dr_character_pride_reaver_killed_hash, _player_index)
 		for e in killed_enemies:

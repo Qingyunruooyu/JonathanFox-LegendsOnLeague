@@ -100,12 +100,11 @@ func _on_spread_ready(targets, thing_hit) -> void:
 			else:
 				angle = rand_range(0, 2 * PI)
 			
-			var projectile = WeaponService.manage_special_spawn_projectile(thing_hit, _current_lighting_projectiles_stats, angle, false, _main._entity_spawner, _player)
-			projectile.connect("ready", self, "_on_projectile_ready", [projectile, thing_hit])
-
-
-func _on_projectile_ready(projectile, thing_hit) -> void:
-	projectile._hitbox.ignored_objects.push_back(thing_hit)
+			var args = WeaponServiceSpawnProjectileArgs.new()
+			args.damage_tracking_key_hash = Utils.character_dr_lighting_mage_hash
+			args.from_player_index = _player_index
+			var projectile = WeaponService.manage_special_spawn_projectile(thing_hit, _current_lighting_projectiles_stats, angle, false, _main._entity_spawner, _player, args)
+			projectile.call_deferred("set_ignored_objects", [thing_hit])
 
 
 func get_args(player_index: int) -> Array:

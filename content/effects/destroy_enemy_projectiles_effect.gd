@@ -43,4 +43,5 @@ func _on_area_entered(area) -> void:
 	if area.collision_layer & 1 << 4:
 		var parent = area.get_parent()
 		if parent is EnemyProjectile:
-			parent.set_to_be_destroyed()
+			RunData.add_tracked_value(_player_index, Utils.character_dr_desert_rose_hash, 1)
+			area.hit_something(_player, 0)
