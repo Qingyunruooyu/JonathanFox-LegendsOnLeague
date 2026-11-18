@@ -1,0 +1,22 @@
+{
+	"name": "LegendsOnLeague",
+	"namespace": "QianMo",
+	"version_number": "1.1.0",
+	"description": "Added 5 characters.",
+	"website_url": "",
+	"dependencies": [
+		"Darkly77-Brotils",
+		"Darkly77-ContentLoader"
+	],
+	"extra": {
+		"godot": {
+			"incompatibilities": [],
+			"authors": [
+				"QianMo"
+			],
+			"compatible_mod_loader_version": ["4.0.0"],
+			"compatible_game_version": ["0.8.0.3"],
+			"config_defaults": {}
+		}
+	}
+}
