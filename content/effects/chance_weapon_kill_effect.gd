@@ -72,11 +72,11 @@ func _on_player_killed_something(_thing_killed) -> void:
 func get_args(_player_index: int) -> Array:
 	var type_text = ""
 	if weapon_type == Type.RANGED:
-		type_text = tr("RANGED") + tr("DR_WEAPON")
+		type_text = tr("RANGED") + tr("WEAPONS")
 	elif weapon_type == Type.MELEE:
-		type_text = tr("MELEE") + tr("DR_WEAPON")
+		type_text = tr("MELEE") + tr("WEAPONS")
 	else:
-		type_text = tr("DR_WEAPON")
+		type_text = tr("WEAPONS")
 	
 	var stats_text = ""
 	for stat in stats_to_add:

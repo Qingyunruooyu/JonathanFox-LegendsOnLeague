@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 key = "stat_range"
-text_key = "EFFECT_CONVERT_STATS_INSTANTLY"
+text_key = "DR_EFFECT_CONVERT_STATS_INSTANTLY"
 value = 10
 custom_key = ""
 storage_method = 0

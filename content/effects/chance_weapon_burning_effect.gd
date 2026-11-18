@@ -65,10 +65,10 @@ func _on_player_hit_something(_thing_hit, _damage_dealt) -> void:
 func get_args(_player_index: int) -> Array:
 	var type_text = ""
 	if weapon_type == Type.RANGED:
-		type_text = tr("RANGED") + tr("DR_WEAPON")
+		type_text = tr("RANGED") + tr("WEAPONS")
 	elif weapon_type == Type.MELEE:
-		type_text = tr("MELEE") + tr("DR_WEAPON")
+		type_text = tr("MELEE") + tr("WEAPONS")
 	else:
-		type_text = tr("DR_WEAPON")
+		type_text = tr("WEAPONS")
 	
 	return [type_text, "%.1f" % (chance * 100)]

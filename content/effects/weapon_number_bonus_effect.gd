@@ -1,0 +1,80 @@
+extends "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/desert_rose_effect_parent.gd"
+
+
+enum Filter {MELEE, RANGED, SET}
+
+
+export (Filter) var filter = Filter.MELEE
+export (String) var set_id = ""
+export (String) var set_name = "WEAPON_CLASS_BLADE"
+
+
+static func get_id() -> String:
+	return "dr_weapon_number_bonus"
+
+
+func apply(player_index: int) -> void:
+	RunData.get_player_effects(player_index)[Utils.dr_weapon_number_bonus_hash].push_back([filter, Keys.generate_hash(set_id), key_hash, value])
+
+
+func unapply(player_index: int) -> void:
+	RunData.get_player_effects(player_index)[Utils.dr_weapon_number_bonus_hash].erase([filter, Keys.generate_hash(set_id), key_hash, value])
+
+
+func serialize() -> Dictionary:
+	var serialized = .serialize()
+	
+	serialized.dr_filter = filter
+	serialized.dr_set_id = set_id
+	serialized.dr_set_name = set_name
+	
+	return serialized
+
+
+func deserialize_and_merge(serialized: Dictionary) -> void:
+	.deserialize_and_merge(serialized)
+	
+	if serialized.has("dr_filter"):
+		filter = serialized.dr_filter
+	if serialized.has("dr_set_id"):
+		set_id = serialized.dr_set_id
+	if serialized.has("dr_set_name"):
+		set_name = serialized.dr_set_name
+
+
+func count_matching_weapons(player_index: int) -> int:
+	var number = 0
+	
+	for weapon in RunData.get_player_weapons_ref(player_index):
+		if _weapon_matches(weapon):
+			number += 1
+	
+	return number
+
+
+func _weapon_matches(weapon) -> bool:
+	if filter == Filter.MELEE:
+		return weapon.type == 0
+	elif filter == Filter.RANGED:
+		return weapon.type == 1
+	for weapon_set in weapon.sets:
+		if weapon_set.my_id_hash == Keys.generate_hash(set_id):
+			return true
+	return false
+
+
+func get_args(player_index: int) -> Array:
+	var filter_text = ""
+	if filter == Filter.SET:
+		filter_text = tr(set_name)
+	elif filter == Filter.MELEE:
+		filter_text = tr("MELEE")
+	else:
+		filter_text = tr("RANGED")
+	
+	var bonus_text = "[color=#00ff00]+%d %s[/color]" % [value, tr(key.to_upper())] if value >= 0 else "[color=red]%d %s[/color]" % [value, tr(key.to_upper())]
+	
+	var number = count_matching_weapons(player_index)
+	var total_bonus = "[color=white][[/color][color=#00ff00]+%d[/color][color=white]][/color]" % (number * value)
+	
+	return [filter_text, bonus_text, total_bonus]

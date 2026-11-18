@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 key = ""
-text_key = "EFFECT_CHANCE_WEAPON_BURNING"
+text_key = "DR_EFFECT_CHANCE_WEAPON_BURNING"
 value = 0
 custom_key = ""
 storage_method = 0

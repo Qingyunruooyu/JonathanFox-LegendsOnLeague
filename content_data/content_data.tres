@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=17 format=2]
+[gd_resource type="Resource" load_steps=14 format=2]
 
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content_data/content_data.gd" type="Script" id=1]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content_data/lol_update_data.tres" type="Resource" id=2]
@@ -7,15 +7,12 @@
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/chance_weapon_kill_effect.gd" type="Script" id=5]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/convert_stats_instantly.gd" type="Script" id=6]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/destroy_enemy_projectiles_effect.gd" type="Script" id=7]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/weapon_set_number_bonus.gd" type="Script" id=8]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/weapon_type_bonus.gd" type="Script" id=9]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/weapon_type_burning.gd" type="Script" id=10]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/weapon_type_number_bonus.gd" type="Script" id=11]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/elites_killer/elites_killer_effect_1.gd" type="Script" id=12]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/lighting_mage/lighting_mage_effect_1.gd" type="Script" id=13]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_3.gd" type="Script" id=14]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_1.gd" type="Script" id=15]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_4.gd" type="Script" id=16]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/weapon_number_bonus_effect.gd" type="Script" id=8]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/elites_killer/elites_killer_effect_1.gd" type="Script" id=9]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/lighting_mage/lighting_mage_effect_1.gd" type="Script" id=10]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_3.gd" type="Script" id=11]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_1.gd" type="Script" id=12]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_4.gd" type="Script" id=13]
 
 [resource]
 script = ExtResource( 1 )
@@ -25,7 +22,7 @@ upgrades = [  ]
 consumables = [  ]
 elites = [  ]
 difficulties = [  ]
-effects = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
+effects = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
 challenges = [  ]
 tracked_items = {
 }

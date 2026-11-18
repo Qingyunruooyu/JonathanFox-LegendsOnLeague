@@ -8,6 +8,6 @@ key = "map_size"
 text_key = "[EMPTY]"
 value = -33
 custom_key = ""
-storage_method = 2
+storage_method = 0
 effect_sign = 0
 custom_args = [  ]
