@@ -1,41 +1,38 @@
 extends Node
 
 
-const MOD_DIR = "QianMo-LegendsOnLeague/"
-const MOD_NAME = 'QianMo-LegendsOnLeague'
+const MOD_NAME = "JonathanFox-LegendsOnLeague"
+const MOD_PATH = "res://mods-unpacked/" + MOD_NAME + "/"
+const DR_EXTENSION_DIR = MOD_PATH + "extensions/"
+const DR_TRANSLATION_DIR = MOD_PATH + "translations/"
 
-var dir = ""
-var ext_dir = ""
-var trans_dir = ""
+const EXTENSION_SCRIPTS = [
+	"utils.gd",
+	"player_run_data.gd",
+	"progress_data.gd",
+	"run_data.gd",
+	"main.gd",
+	"player.gd",
+	"weapon_service.gd",
+	"entity_spawner.gd",
+	"dlc_2_data.gd",
+]
 
 
-func _init(_modLoader = ModLoader):
+func _init():
 	ModLoaderLog.info("Init", MOD_NAME)
 	
-	dir = ModLoaderMod.get_unpacked_dir() + MOD_DIR
+	for script in EXTENSION_SCRIPTS:
+		ModLoaderMod.install_script_extension(DR_EXTENSION_DIR + script)
 	
-	ext_dir = dir + "extensions/"
-	trans_dir = dir + "translations/"
-	
-	ModLoaderMod.install_script_extension(ext_dir + "main.gd")
-	ModLoaderMod.install_script_extension(ext_dir + "players/player.gd")
-	ModLoaderMod.install_script_extension(ext_dir + "singletons/run_data.gd")
-	ModLoaderMod.install_script_extension(ext_dir + "singletons/progress_data.gd")
-	
-	ModLoaderMod.add_translation(trans_dir + "mod_translation.zh.translation")
-	ModLoaderMod.add_translation(trans_dir + "mod_translation.en.translation")
+	ModLoaderMod.add_translation(DR_TRANSLATION_DIR + "mod_translation.en.translation")
+	ModLoaderMod.add_translation(DR_TRANSLATION_DIR + "mod_translation.zh_Hans_CN.translation")
 
 
 func _ready():
-	ModLoaderLog.info('Done', MOD_NAME)
+	ModLoaderLog.info("Done", MOD_NAME)
 	
-	ItemService.effects.push_back(load("res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_1.gd"))
-	
-	var ContentLoader = get_node("/root/ModLoader/Darkly77-ContentLoader/ContentLoader")
-	ContentLoader.load_data(dir + "content_data/desert_rose_items.tres", MOD_NAME)
-	
-	var listener = load("res://mods-unpacked/QianMo-LegendsOnLeague/desert_rose_main_event_listener.gd")
+	var listener = load(MOD_PATH + "desert_rose_main_event_listener.gd")
 	listener = listener.new()
 	listener.name = "DesertRoseMainEventListener"
 	add_child(listener)
-

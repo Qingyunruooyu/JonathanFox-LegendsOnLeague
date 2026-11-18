@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://global/item_set_data.gd" type="Script" id=1]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_data.tres" type="Resource" id=2]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/elites_killer/elites_killer_data.tres" type="Resource" id=3]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/lighting_mage/lighting_mage_data.tres" type="Resource" id=4]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_data.tres" type="Resource" id=5]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_data.tres" type="Resource" id=6]
+
+[resource]
+script = ExtResource( 1 )
+my_id = "jonathanfox_lol_set"
+items = [  ]
+weapons = [  ]
+stats = [  ]
+characters = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+challenges = [  ]

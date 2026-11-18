@@ -4,25 +4,48 @@ extends "res://items/global/effect.gd"
 export (bool) var enable_wave_start_signal = true
 
 var _player = null
+var _player_index: int = 0
 var _main = null
 
 
-static func get_id()->String:
-	return "desert_rose_effect"
+static func get_id() -> String:
+	return "dr_effect"
 
 
-func apply()->void:
+func apply(player_index: int) -> void:
 	pass
 
 
-func unapply()->void:
+func serialize() -> Dictionary:
+	var serialized = .serialize()
+	
+	serialized.enable_wave_start_signal = enable_wave_start_signal
+	
+	return serialized
+
+
+func deserialize_and_merge(serialized: Dictionary) -> void:
+	.deserialize_and_merge(serialized)
+	
+	if serialized.has("enable_wave_start_signal"):
+		enable_wave_start_signal = serialized.enable_wave_start_signal
+
+
+func unapply(player_index: int) -> void:
+	pass
+
+
+func cleanup(player_index: int) -> void:
 	if enable_wave_start_signal:
 		if RunData.is_connected("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix"):
 			RunData.disconnect("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix")
 
 
-func apply_connection()->void:
-	_player = TempStats.player
+func apply_connection(player) -> void:
+	_player = player
+	if player != null and is_instance_valid(player):
+		_player_index = player.player_index
+	
 	if enable_wave_start_signal:
 		if not RunData.is_connected("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix"):
 			RunData.connect("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix")
@@ -35,11 +58,12 @@ func _on_desert_rose_wave_start_prefix(player):
 		_on_desert_rose_wave_start(player)
 
 
-func _on_desert_rose_wave_start(player)->void:
+func _on_desert_rose_wave_start(player) -> void:
 	_player = player
+	_player_index = player.player_index
 
 
-func connect_safely(obj, signal_name:String, target, call_back:String, binds:Array = [])->void:
+func connect_safely(obj, signal_name: String, target, call_back: String, binds: Array = []) -> void:
 	if obj == null or not is_instance_valid(obj) or obj.is_connected(signal_name, target, call_back):
 		return
 	if binds.size() == 0:
@@ -48,34 +72,13 @@ func connect_safely(obj, signal_name:String, target, call_back:String, binds:Arr
 		var _error = obj.connect(signal_name, target, call_back, binds)
 
 
-func disconnect_safely(obj, signal_name:String, target, call_back:String)->void:
+func disconnect_safely(obj, signal_name: String, target, call_back: String) -> void:
 	if obj == null or not is_instance_valid(obj) or not obj.is_connected(signal_name, target, call_back):
 		return
 	obj.disconnect(signal_name, target, call_back)
 
 
-func is_mobile_device()->bool:
-	var system_name = OS.get_name()
-	
-	return system_name == "Android" or system_name == "iOS"
-
-
-func instance_of(obj:Object, parent:Script)->bool :
-	var script:Script = obj.get_script()
-	var parent_resource_path = parent.resource_path
-	if parent and script:
-		if script.resource_path == parent_resource_path:
-			return true
-		else:
-			script = script.get_base_script()
-			while script:
-				if script.resource_path == parent_resource_path:
-					return true
-				script = script.get_base_script()
-	return false
-
-
-func get_colored_text_by_value(val, base_val, format:String = "%s")->Array :
+func get_colored_text_by_value(val, base_val, format: String = "%s") -> Array:
 	if val < base_val:
 		return [("[color=red]" + format + "[/color]") % val, -1]
 	else:
@@ -85,7 +88,7 @@ func get_colored_text_by_value(val, base_val, format:String = "%s")->Array :
 			return [("[color=#00ff00]" + format + "[/color]") % val, -1]
 
 
-func get_colored_text_by_sign(text:String, isign: int = 0)->String :
+func get_colored_text_by_sign(text: String, isign: int = 0) -> String:
 	if isign == 0:
 		return "[color=white]%s[/color]" % text
 	elif isign == 1:

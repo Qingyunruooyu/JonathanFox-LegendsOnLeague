@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=16 format=2]
 
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_1.tres" type="Resource" id=1]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_eyes.tres" type="Resource" id=2]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_icon.png" type="Texture" id=3]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_hat.tres" type="Resource" id=4]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_mouth.tres" type="Resource" id=5]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_3.tres" type="Resource" id=6]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_2.tres" type="Resource" id=7]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_4.tres" type="Resource" id=8]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_1.tres" type="Resource" id=1]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_eyes.tres" type="Resource" id=2]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_icon.png" type="Texture" id=3]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_hat.tres" type="Resource" id=4]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_mouth.tres" type="Resource" id=5]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_3.tres" type="Resource" id=6]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_2.tres" type="Resource" id=7]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_4.tres" type="Resource" id=8]
 [ext_resource path="res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres" type="Resource" id=9]
 [ext_resource path="res://weapons/melee/ghost_flint/1/ghost_flint_data.tres" type="Resource" id=10]
 [ext_resource path="res://weapons/melee/dagger/1/dagger_data.tres" type="Resource" id=11]
@@ -20,6 +20,7 @@
 script = ExtResource( 14 )
 my_id = "dr_character_pride_reaver"
 unlocked_by_default = true
+required_item_set = "jonathanfox_lol"
 icon = ExtResource( 3 )
 name = "DR_CHARACTER_PRIDE_REAVER"
 tier = 0

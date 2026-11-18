@@ -5,20 +5,20 @@
 [ext_resource path="res://weapons/ranged/smg/1/smg_data.tres" type="Resource" id=3]
 [ext_resource path="res://items/characters/character_data.gd" type="Script" id=4]
 [ext_resource path="res://weapons/ranged/revolver/1/revolver_data.tres" type="Resource" id=5]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_icon.png" type="Texture" id=6]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_10.tres" type="Resource" id=7]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_2.tres" type="Resource" id=8]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_9.tres" type="Resource" id=9]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_8.tres" type="Resource" id=10]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_5.tres" type="Resource" id=11]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_3.tres" type="Resource" id=12]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_4.tres" type="Resource" id=13]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_7.tres" type="Resource" id=14]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_1.tres" type="Resource" id=15]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_6.tres" type="Resource" id=16]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_hat.tres" type="Resource" id=17]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_eyes.tres" type="Resource" id=18]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_beard.tres" type="Resource" id=19]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_icon.png" type="Texture" id=6]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_10.tres" type="Resource" id=7]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_2.tres" type="Resource" id=8]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_9.tres" type="Resource" id=9]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_8.tres" type="Resource" id=10]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_5.tres" type="Resource" id=11]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_3.tres" type="Resource" id=12]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_4.tres" type="Resource" id=13]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_7.tres" type="Resource" id=14]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_1.tres" type="Resource" id=15]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/ocean_scourge_effect_6.tres" type="Resource" id=16]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_hat.tres" type="Resource" id=17]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_eyes.tres" type="Resource" id=18]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/ocean_scourge/dr_ocean_scourge_beard.tres" type="Resource" id=19]
 [ext_resource path="res://weapons/melee/pruner/1/pruner_data.tres" type="Resource" id=20]
 [ext_resource path="res://weapons/melee/chopper/1/chopper_data.tres" type="Resource" id=21]
 
@@ -26,6 +26,7 @@
 script = ExtResource( 4 )
 my_id = "dr_character_ocean_scourge"
 unlocked_by_default = true
+required_item_set = "jonathanfox_lol"
 icon = ExtResource( 6 )
 name = "DR_CHARACTER_OCEAN_SCOURGE"
 tier = 0

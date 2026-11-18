@@ -1,28 +1,29 @@
 [gd_resource type="Resource" load_steps=19 format=2]
 
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_icon.png" type="Texture" id=1]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_icon.png" type="Texture" id=1]
 [ext_resource path="res://items/characters/character_data.gd" type="Script" id=2]
 [ext_resource path="res://weapons/ranged/pistol/1/pistol_data.tres" type="Resource" id=3]
 [ext_resource path="res://weapons/ranged/smg/1/smg_data.tres" type="Resource" id=4]
 [ext_resource path="res://weapons/ranged/revolver/1/revolver_data.tres" type="Resource" id=5]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_mouth_appearance.tres" type="Resource" id=6]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_eyes_appearance.tres" type="Resource" id=7]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_head_appearance.tres" type="Resource" id=8]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_1.tres" type="Resource" id=9]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_mouth_appearance.tres" type="Resource" id=6]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_eyes_appearance.tres" type="Resource" id=7]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_head_appearance.tres" type="Resource" id=8]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_1.tres" type="Resource" id=9]
 [ext_resource path="res://weapons/melee/knife/1/knife_data.tres" type="Resource" id=10]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_8.tres" type="Resource" id=11]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_6.tres" type="Resource" id=12]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_7.tres" type="Resource" id=13]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_9.tres" type="Resource" id=14]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_4.tres" type="Resource" id=15]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_2.tres" type="Resource" id=16]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_3.tres" type="Resource" id=17]
-[ext_resource path="res://mods-unpacked/QianMo-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_5.tres" type="Resource" id=18]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_8.tres" type="Resource" id=11]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_6.tres" type="Resource" id=12]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_7.tres" type="Resource" id=13]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_9.tres" type="Resource" id=14]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_4.tres" type="Resource" id=15]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_2.tres" type="Resource" id=16]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_3.tres" type="Resource" id=17]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_5.tres" type="Resource" id=18]
 
 [resource]
 script = ExtResource( 2 )
 my_id = "dr_character_desert_rose"
 unlocked_by_default = true
+required_item_set = "jonathanfox_lol"
 icon = ExtResource( 1 )
 name = "DR_CHARACTER_DESERT_ROSE"
 tier = 0

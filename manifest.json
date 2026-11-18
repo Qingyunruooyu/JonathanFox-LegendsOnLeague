@@ -1,21 +1,19 @@
 {
 	"name": "LegendsOnLeague",
-	"namespace": "QianMo",
-	"version_number": "1.1.0",
+	"namespace": "JonathanFox",
+	"version_number": "2.0.0",
 	"description": "Added 5 characters.",
 	"website_url": "",
-	"dependencies": [
-		"Darkly77-Brotils",
-		"Darkly77-ContentLoader"
-	],
+	"dependencies": [],
 	"extra": {
 		"godot": {
 			"incompatibilities": [],
 			"authors": [
-				"QianMo"
+				"QianMo",
+				"JonathanFox"
 			],
-			"compatible_mod_loader_version": ["4.0.0"],
-			"compatible_game_version": ["0.8.0.3"],
+			"compatible_mod_loader_version": "6.2.2",
+			"compatible_game_version": ["1.2.0.2"],
 			"config_defaults": {}
 		}
 	}

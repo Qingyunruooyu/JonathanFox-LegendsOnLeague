@@ -1,18 +1,22 @@
-id,zh,en
+﻿﻿key,zh_Hans_CN,en
 DR_WEAPON,武器,Weapon
 DR_CHARACTER_DESERT_ROSE,炼狱玫瑰,Purgatory Rose
 EFFECT_WEAPON_TYPE_BONUS,当使用[color=#00ff00]{0}武器[/color]时{1},{1} when using [color=#00ff00]{0} Weapons[/color]
 EFFECT_WEAPON_SET_NUMBER_BONUS,每一{0}武器会{1} {2},{1} for every {0} weapons you have {2}
-EFFECT_DESTROY_ENEMY_PROJECTILES,当[color=#00ff00]近战武器[/color]攻击时会摧毁敌人的子弹,[color=#00ff00]Melee Weapons[/color] will destroy enemies"'" projectiles
-EFFECT_CONVERT_STATS_INSTANTLY,开局时[color=#00ff00]{0}% {1}[/color]会转化为[color=#00ff00]{2}[/color] ([color=#00ff00]{3} {1}[/color] = [color=#00ff00]{4} {2}[/color]),When game started"," convert [color=#00ff00]{0}% {1}[/color] to [color=#00ff00]{2}[/color] ([color=#00ff00]{3} {1}[/color] = [color=#00ff00]{4} {2}[/color])
+EFFECT_DESTROY_ENEMY_PROJECTILES,当[color=#00ff00]近战武器[/color]攻击时会摧毁敌人的子弹,[color=#00ff00]Melee Weapons[/color] will destroy enemies' projectiles
+EFFECT_CONVERT_STATS_INSTANTLY,开局时[color=#00ff00]{0}% {1}[/color]会转化为[color=#00ff00]{2}[/color] ([color=#00ff00]{3} {1}[/color] = [color=#00ff00]{4} {2}[/color]),"When game started, convert [color=#00ff00]{0}% {1}[/color] to [color=#00ff00]{2}[/color] ([color=#00ff00]{3} {1}[/color] = [color=#00ff00]{4} {2}[/color])"
 DR_CHARACTER_ELITES_KILLER,精英战士,Elites Warrior
-DR_EFFECT_CHARACTER_ELITES_KILLER,只会生成[color=red]精英[/color]敌人\n地图大小[color=#00ff00]恒定为67%[/color],Only [color=red]elites[/color] will appear in a wave\nMap size [color=#00ff00]is always 67%[/color]
+DR_EFFECT_CHARACTER_ELITES_KILLER,"只会生成[color=red]精英[/color]敌人
+地图大小[color=#00ff00]恒定为67%[/color]","Only [color=red]elites[/color] will appear in a wave
+Map size [color=#00ff00]is always 67%[/color]"
 DR_CHARACTER_OCEAN_SCOURGE,海洋霸主,Ocean Sourge
 DR_EFFECT_CHARACTER_OCEAN_SCOURGE,每隔{0}秒后在随机地点爆炸造成{1}伤害,Every {0} seconds will trigger one explosion at random position dealing {1} damage
 EFFECT_CHANCE_WEAPON_KILL,当[color=#00ff00]{0}[/color]击杀敌人时[color=#00ff00]{1}%概率[/color]获得[color=#00ff00]{2}[/color],When killed an enemy by using [color=#00ff00]{0}[/color] you have [color=#00ff00]{1}% chance[/color] to gain [color=#00ff00]{2}[/color]
 EFFECT_CHANCE_WEAPON_BURNING,当[color=#00ff00]{0}[/color]攻击敌人时[color=#00ff00]{1}%概率[/color]点燃敌人,When hit an enemy by using [color=#00ff00]{0}[/color] you have [color=#00ff00]{1}% chance[/color] to ignite the target
 DR_CHARACTER_LIGHING_MAGE,雷电法王,Lighting Mage
-DR_EFFECT_CHARACTER_LIGHTING_MAGE,你的攻击会有{0}概率对命中目标施加[color=yellow]雷电[/color]","雷电会弹射至附近最多[color=#00ff00]{2}[/color]个目标造成{1}伤害,Your weapons have {0} chance to trigger [color=yellow]Lighting[/color]"," The lighting will spread for max [color=#00ff00]{2}[/color] targets and deal {1} damage
+DR_EFFECT_CHARACTER_LIGHTING_MAGE,你的攻击会有{0}概率对命中目标施加[color=yellow]雷电[/color]，雷电会弹射至附近最多[color=#00ff00]{2}[/color]个目标造成{1}伤害,"Your weapons have {0} chance to trigger [color=yellow]Lighting[/color], The lighting will spread for max [color=#00ff00]{2}[/color] targets and deal {1} damage"
 DR_CHARACTER_PRIDE_REAVER,傲掠猎手,Pride Reaver
-DR_EFFECT_CHARACTER_PRIDE_REAVER,击杀[color=#00ff00]新种类[/color]敌人后{0}\n击杀Boss后[color=#00ff00]立刻升级[/color],Kill an enemy which you [color=#00ff00]havent killed before[/color] will gain {0}\nYou get [color=#00ff00]levelled up[/color] when killed a Boss
-DR_EFFECT_CHARACTER_PRIDE_REAVER_2,受伤后获得{0}和[color=#00ff00]短暂无敌[/color]","持续[color=#00ff00]{1}s[/color],When took damage you get {0} and [color=#00ff00]invincibility[/color] for a short time ([color=#00ff00]{1}s[/color])
+DR_EFFECT_CHARACTER_PRIDE_REAVER,"击杀[color=#00ff00]新种类[/color]敌人后{0}
+击杀Boss后[color=#00ff00]立刻升级[/color]","Kill an enemy which you [color=#00ff00]havent killed before[/color] will gain {0}
+You get [color=#00ff00]levelled up[/color] when killed a Boss"
+DR_EFFECT_CHARACTER_PRIDE_REAVER_2,受伤后获得{0}和[color=#00ff00]短暂无敌[/color]，持续[color=#00ff00]{1}s[/color],When took damage you get {0} and [color=#00ff00]invincibility[/color] for a short time ([color=#00ff00]{1}s[/color])
