@@ -138,4 +138,4 @@ func check_boss() -> void:
 
 
 func get_args(_player_index: int) -> Array:
-	return [str(value) + "%"]
+	return []

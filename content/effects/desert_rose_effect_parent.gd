@@ -161,18 +161,18 @@ func _disconnect_all() -> void:
 
 func get_colored_text_by_value(val, base_val, format: String = "%s") -> Array:
 	if val < base_val:
-		return [("[color=red]" + format + "[/color]") % val, -1]
+		return [("[color=#" + ProgressData.settings.color_negative + "]" + format + "[/color]") % val, -1]
 	else:
 		if val >= 0:
-			return [("[color=#00ff00]" + format + "[/color]") % val, 1]
+			return [("[color=#" + ProgressData.settings.color_positive + "]" + format + "[/color]") % val, 1]
 		else:
-			return [("[color=#00ff00]" + format + "[/color]") % val, -1]
+			return [("[color=#" + ProgressData.settings.color_positive + "]" + format + "[/color]") % val, -1]
 
 
 func get_colored_text_by_sign(text: String, isign: int = 0) -> String:
 	if isign == 0:
 		return "[color=white]%s[/color]" % text
 	elif isign == 1:
-		return "[color=#00ff00]%s[/color]" % text
+		return "[color=#" + ProgressData.settings.color_positive + "]%s[/color]" % text
 	else:
-		return "[color=red]%s[/color]" % text
+		return "[color=#" + ProgressData.settings.color_negative + "]%s[/color]" % text

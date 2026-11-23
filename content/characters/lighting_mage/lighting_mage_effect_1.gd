@@ -6,7 +6,7 @@ export (Resource) var lighting_projectiles_stats
 export (float) var chance = 0.3
 export (int) var max_targets = 3
 
-const MONITOR_PATH = "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/lighting_mage_monitor.gd"
+const MONITOR_PATH = "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/lighting_mage/lighting_mage_monitor.gd"
 
 
 static func get_id() -> String:
@@ -50,14 +50,13 @@ func _on_desert_rose_wave_start(player) -> void:
 
 func get_args(player_index: int) -> Array:
 	var actual_chance = max(0, Utils.get_stat(Keys.stat_elemental_damage_hash, player_index) * 0.0035 + chance)
-	var chance_text = "%s (%s)" % [get_colored_text_by_value(actual_chance * 100.0, chance * 100.0, "%.1f%%")[0], _get_scaling_text(player_index)]
+	var chance_text = get_colored_text_by_value(actual_chance * 100.0, chance * 100.0, "%.1f")[0]
 	
 	var current_stats = WeaponService.init_ranged_stats(lighting_projectiles_stats, player_index)
 	var damage_text = current_stats.get_damage_text(lighting_projectiles_stats, player_index, [])
 	
-	return [chance_text, damage_text, str(max_targets)]
+	return [chance_text, _get_scaling_text(player_index), damage_text, str(max_targets)]
 
 
-func _get_scaling_text(player_index: int) -> String:
-	var stat_value = Utils.get_stat(Keys.stat_elemental_damage_hash, player_index)
-	return "%d%% %s" % [int(stat_value * 0.35), tr("STAT_ELEMENTAL_DAMAGE")]
+func _get_scaling_text(_player_index: int) -> String:
+	return Utils.get_scaling_stat_icon_text(Keys.stat_elemental_damage_hash, 0.35)

@@ -92,9 +92,9 @@ func deserialize_and_merge(effect: Dictionary) -> void:
 
 
 func get_args(_player_index: int) -> Array:
-	var scaling_text = "[color=#00ff00]"
+	var scaling_text = "[color=#FF8C00]"
 	for stat in stats_add:
-		scaling_text += "+%d %s & " % [stat[1], tr(stat[0].to_upper())]
+		scaling_text += "%d %s & " % [stat[1], tr(stat[0].to_upper())]
 	scaling_text = scaling_text.trim_suffix(" & ")
 	scaling_text += "[/color]"
 	

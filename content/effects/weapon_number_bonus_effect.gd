@@ -72,9 +72,6 @@ func get_args(player_index: int) -> Array:
 	else:
 		filter_text = tr("RANGED")
 	
-	var bonus_text = "[color=#00ff00]+%d %s[/color]" % [value, tr(key.to_upper())] if value >= 0 else "[color=red]%d %s[/color]" % [value, tr(key.to_upper())]
-	
 	var number = count_matching_weapons(player_index)
-	var total_bonus = "[color=white][[/color][color=#00ff00]+%d[/color][color=white]][/color]" % (number * value)
 	
-	return [filter_text, bonus_text, total_bonus]
+	return [filter_text, str(value), str(number * value)]

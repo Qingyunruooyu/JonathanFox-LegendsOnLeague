@@ -3,7 +3,7 @@ extends "res://dlcs/dlc_2/dlc_2_data.gd"
 
 const DR_MUTATION_COPY_BLACKLIST_IDS = [
 	"dr_elites_killer_effect",
-	"dr_weapon_number_bonus",
+	"dr_pride_reaver_handbook",
 ]
 
 

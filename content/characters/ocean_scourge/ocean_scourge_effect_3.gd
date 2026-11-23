@@ -126,14 +126,13 @@ func _on_timer_timeout(player_index: int) -> void:
 
 
 func get_args(player_index: int) -> Array:
-	var interval_text = "[color=#00ff00]%.1f[/color]" % interval
+	var interval_text = "%.1f" % interval
 	
 	var damage = _get_damage(player_index)
-	var scaling_text = ""
+	var scaling_stats = []
 	for stat in stats_scaled:
-		scaling_text += "%.0f%% %s " % [stat[1] * 100, tr(stat[0].to_upper())]
-	
-	scaling_text = scaling_text.trim_suffix(" ")
+		scaling_stats.push_back([Keys.generate_hash(stat[0]), stat[1]])
+	var scaling_text = WeaponService.get_scaling_stats_icon_text(scaling_stats)
 	var damage_text = "%s [color=gray]| %d[/color] (%s)" % [get_colored_text_by_value(damage, base_damage)[0], base_damage, scaling_text]
 	
 	return [interval_text, damage_text]
