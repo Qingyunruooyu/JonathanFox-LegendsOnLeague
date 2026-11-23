@@ -4,8 +4,7 @@ extends Node
 signal player_spawned(player)
 
 
-var _applied_effects = []
-var _applying_effects = []
+var _applied_effects = {}
 
 
 func _ready():
@@ -16,28 +15,38 @@ func _ready():
 
 
 func _on_player_spawned(player) -> void:
-	_applying_effects.clear()
+	var pid: int = player.player_index
 	
-	for item in RunData.get_player_items(player.player_index):
+	for stale_pid in _applied_effects.keys():
+		if stale_pid >= RunData.get_player_count():
+			for effect in _applied_effects[stale_pid]:
+				effect.cleanup(stale_pid)
+			_applied_effects.erase(stale_pid)
+	
+	if not _applied_effects.has(pid):
+		_applied_effects[pid] = []
+	
+	var applying_effects = []
+	
+	for item in RunData.get_player_items(pid):
 		for effect in item.effects:
 			if effect.get_id().begins_with("dr_"):
 				effect.apply_connection(player)
-				_applying_effects.append(effect)
-				if not _applied_effects.has(effect):
-					_applied_effects.append(effect)
+				applying_effects.append(effect)
+				if not _applied_effects[pid].has(effect):
+					_applied_effects[pid].append(effect)
 	
-	for weapon in RunData.get_player_weapons_ref(player.player_index):
+	for weapon in RunData.get_player_weapons_ref(pid):
 		for effect in weapon.effects:
 			if effect.get_id().begins_with("dr_"):
 				effect.apply_connection(player)
-				_applying_effects.append(effect)
-				if not _applied_effects.has(effect):
-					_applied_effects.append(effect)
+				applying_effects.append(effect)
+				if not _applied_effects[pid].has(effect):
+					_applied_effects[pid].append(effect)
 	
-	for effect in _applied_effects.duplicate():
-		if not _applying_effects.has(effect):
-			effect.cleanup(effect._player_index)
-			effect.unapply(effect._player_index)
-			_applied_effects.erase(effect)
+	for effect in _applied_effects[pid].duplicate():
+		if not applying_effects.has(effect):
+			effect.cleanup(pid)
+			_applied_effects[pid].erase(effect)
 	
 	RunData.emit_signal("desert_rose_wave_start", player)

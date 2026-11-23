@@ -1,17 +1,16 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/convert_stats_instantly.gd" type="Script" id=1]
+[ext_resource path="res://effects/items/convert_stat_effect.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
 key = "stat_range"
-text_key = "DR_EFFECT_CONVERT_STATS_INSTANTLY"
+text_key = "effect_convert_stat_end_of_wave"
 value = 10
-custom_key = ""
-storage_method = 0
+custom_key = "convert_stats_end_of_wave"
+storage_method = 1
 effect_sign = 3
 custom_args = [  ]
-enable_wave_start_signal = true
 pct_converted = 100.0
 to_stat = "stat_percent_damage"
 to_value = 1

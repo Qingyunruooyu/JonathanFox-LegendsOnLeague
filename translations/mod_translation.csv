@@ -2,7 +2,6 @@
 CHARACTER_DR_DESERT_ROSE,炼狱玫瑰,Purgatory Rose
 DR_EFFECT_WEAPON_NUMBER_BONUS,每一{0}武器会{1} {2},{1} for every {0} weapons you have {2}
 DR_EFFECT_DESTROY_ENEMY_PROJECTILES,当[color=#00ff00]近战武器[/color]攻击时会摧毁敌人的子弹,[color=#00ff00]Melee Weapons[/color] will destroy enemies' projectiles
-DR_EFFECT_CONVERT_STATS_INSTANTLY,开局时[color=#00ff00]{0}% {1}[/color]会转化为[color=#00ff00]{2}[/color] ([color=#00ff00]{3} {1}[/color] = [color=#00ff00]{4} {2}[/color]),"When game started, convert [color=#00ff00]{0}% {1}[/color] to [color=#00ff00]{2}[/color] ([color=#00ff00]{3} {1}[/color] = [color=#00ff00]{4} {2}[/color])"
 CHARACTER_DR_ELITES_KILLER,精英战士,Elites Warrior
 DR_EFFECT_CHARACTER_ELITES_KILLER,"只会生成[color=red]精英[/color]敌人
 地图大小[color=#00ff00]恒定为67%[/color]","Only [color=red]elites[/color] will appear in a wave

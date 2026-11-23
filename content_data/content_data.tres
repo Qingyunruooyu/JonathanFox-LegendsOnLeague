@@ -1,11 +1,10 @@
-[gd_resource type="Resource" load_steps=14 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content_data/content_data.gd" type="Script" id=1]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content_data/lol_update_data.tres" type="Resource" id=2]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/desert_rose_effect_parent.gd" type="Script" id=3]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/chance_weapon_burning_effect.gd" type="Script" id=4]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/chance_weapon_kill_effect.gd" type="Script" id=5]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/convert_stats_instantly.gd" type="Script" id=6]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/destroy_enemy_projectiles_effect.gd" type="Script" id=7]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/weapon_number_bonus_effect.gd" type="Script" id=8]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/elites_killer/elites_killer_effect_1.gd" type="Script" id=9]
@@ -22,7 +21,7 @@ upgrades = [  ]
 consumables = [  ]
 elites = [  ]
 difficulties = [  ]
-effects = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+effects = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
 challenges = [  ]
 tracked_items = {
 "character_dr_desert_rose": 0,

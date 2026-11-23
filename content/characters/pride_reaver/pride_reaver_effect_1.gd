@@ -20,18 +20,20 @@ func unapply(player_index: int) -> void:
 
 
 func cleanup(player_index: int) -> void:
+	var killed_effect = RunData.get_player_effect(Utils.dr_character_pride_reaver_killed_hash, player_index)
 	for e in killed_enemies:
-		RunData.get_player_effect(Utils.dr_character_pride_reaver_killed_hash, player_index).erase(e)
-	
-	killed_enemies.clear()
+		killed_effect.erase(e)
 	
 	.cleanup(player_index)
+
+
+func _on_last_owner_removed() -> void:
+	killed_enemies.clear()
 
 
 func _on_desert_rose_wave_start(player) -> void:
 	._on_desert_rose_wave_start(player)
 	
-	_main = RunData.get_tree().current_scene
 	var entity_spawner = _main._entity_spawner
 	
 	_stats_add_hashes.clear()
@@ -46,27 +48,29 @@ func _on_desert_rose_wave_start(player) -> void:
 
 
 func _on_enemy_spawned(enemy) -> void:
-	enemy.connect("died", self, "_on_enemy_died")
+	connect_safely(enemy, "died", self, "_on_enemy_died")
 
 
 func _on_enemy_died(enemy, _args) -> void:
-	if _main._cleaning_up:
+	if not is_instance_valid(_main) or _main._cleaning_up:
 		return
 	var unit_resource_path = enemy.filename
 	var enemy_name = unit_resource_path.get_slice("/", unit_resource_path.count("/"))
 	if not enemy_name in killed_enemies:
 		killed_enemies.push_back(enemy_name)
-		for stat in _stats_add_hashes:
-			RunData.add_stat(stat[0], stat[1], _player_index)
-			RunData.add_tracked_value(_player_index, Utils.character_dr_pride_reaver_hash, stat[1])
-		
-		var killed_effect = RunData.get_player_effect(Utils.dr_character_pride_reaver_killed_hash, _player_index)
-		for e in killed_enemies:
-			if not e in killed_effect:
-				killed_effect.push_back(e)
+		for pid in _owner_pids:
+			for stat in _stats_add_hashes:
+				RunData.add_stat(stat[0], stat[1], pid)
+				RunData.add_tracked_value(pid, Utils.character_dr_pride_reaver_hash, stat[1])
+			
+			var killed_effect = RunData.get_player_effect(Utils.dr_character_pride_reaver_killed_hash, pid)
+			for e in killed_enemies:
+				if not e in killed_effect:
+					killed_effect.push_back(e)
 	
 	if enemy is Boss:
-		RunData.add_xp(int(RunData.get_xp_needed(RunData.players_data[_player_index].current_level)), _player_index)
+		for pid in _owner_pids:
+			RunData.add_xp(int(RunData.get_xp_needed(RunData.players_data[pid].current_level)), pid)
 
 
 func serialize() -> Dictionary:

@@ -20,27 +20,24 @@ func unapply(player_index: int) -> void:
 	RunData.get_player_effects(player_index)[key_hash] -= value
 
 
-func cleanup(player_index: int) -> void:
+func _on_last_owner_removed() -> void:
 	if is_instance_valid(_entity_spawner):
-		disconnect_safely(_entity_spawner, "enemy_spawned", self, "_on_enemy_spawned")
 		_entity_spawner.dr_elite_replace_chance = 0.0
 		_entity_spawner.dr_elite_scenes = []
-	
-	.cleanup(player_index)
 
 
 func _on_desert_rose_wave_start(player) -> void:
 	._on_desert_rose_wave_start(player)
 	
-	_main = RunData.get_tree().current_scene
+	if not once_per_wave("elites_killer"):
+		return
+	
 	_entity_spawner = _main._entity_spawner
 	
-	disconnect_safely(_entity_spawner, "enemy_spawned", self, "_on_enemy_spawned")
-	_entity_spawner.connect("enemy_spawned", self, "_on_enemy_spawned")
+	connect_safely(_entity_spawner, "enemy_spawned", self, "_on_enemy_spawned")
 	
 	_wave_ended = false
-	disconnect_safely(_main._wave_timer, "timeout", self, "_on_wave_timer_timeout")
-	_main._wave_timer.connect("timeout", self, "_on_wave_timer_timeout")
+	connect_safely(_main._wave_timer, "timeout", self, "_on_wave_timer_timeout")
 	
 	_elite_scenes.clear()
 	var zone_data = ZoneService.get_zone_data(RunData.current_zone)

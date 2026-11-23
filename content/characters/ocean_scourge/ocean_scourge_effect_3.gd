@@ -7,9 +7,11 @@ export (float) var interval = 5.0
 export (int) var base_damage = 10
 export (Array, Array) var stats_scaled = [["stat_max_hp", 0.5]]
 
-var _last_pos = Vector2.ZERO
+var _last_positions: Dictionary = {}
 var _current_exploding_effect = null
 var _stats_scaled_hashes = []
+var _players_by_pid: Dictionary = {}
+var _timers: Dictionary = {}
 
 
 static func get_id() -> String:
@@ -45,17 +47,34 @@ func deserialize_and_merge(serialized: Dictionary) -> void:
 		mark_scene = load(serialized.dr_mark_scene_path)
 
 
+func _on_owner_removed(player_index: int) -> void:
+	var timer = _timers.get(player_index)
+	if timer != null and is_instance_valid(timer):
+		disconnect_safely(timer, "timeout", self, "_on_timer_timeout")
+		timer.queue_free()
+	
+	_timers.erase(player_index)
+	_players_by_pid.erase(player_index)
+	_last_positions.erase(player_index)
+
+
 func _on_desert_rose_wave_start(_p_player) -> void:
 	._on_desert_rose_wave_start(_p_player)
-	_main = RunData.get_tree().current_scene
-	_player_index = _p_player.player_index
 	
-	_current_exploding_effect = exploding_effect.duplicate()
-	_current_exploding_effect.scale = 1.5
+	var pid: int = _p_player.player_index
+	var old_timer = _timers.get(pid)
+	if old_timer != null and is_instance_valid(old_timer):
+		return
+	
+	if _current_exploding_effect == null:
+		_current_exploding_effect = exploding_effect.duplicate()
+		_current_exploding_effect.scale = 1.5
 	
 	_stats_scaled_hashes.clear()
 	for stat in stats_scaled:
 		_stats_scaled_hashes.push_back([Keys.generate_hash(stat[0]), stat[1]])
+	
+	_players_by_pid[pid] = _p_player
 	
 	var timer = Timer.new()
 	_main.add_child(timer)
@@ -63,12 +82,13 @@ func _on_desert_rose_wave_start(_p_player) -> void:
 	timer.one_shot = false
 	timer.start()
 	
-	var _error = timer.connect("timeout", self, "_on_timer_timeout")
+	connect_safely(timer, "timeout", self, "_on_timer_timeout", [pid])
+	_timers[pid] = timer
 	
-	_last_pos = ZoneService.get_rand_pos()
+	_last_positions[pid] = ZoneService.get_rand_pos()
 	var mark = mark_scene.instance()
 	mark.init(interval)
-	mark.global_position = _last_pos
+	mark.global_position = _last_positions[pid]
 	_main.call_deferred("add_child", mark)
 
 
@@ -80,24 +100,28 @@ func _get_damage(player_index: int) -> int:
 	return int(max(1, damage * (Utils.get_stat(Keys.explosion_damage_hash, player_index) / 100.0 + 1.0)))
 
 
-func _on_timer_timeout() -> void:
+func _on_timer_timeout(player_index: int) -> void:
+	var owner_player = _players_by_pid.get(player_index)
+	if owner_player == null or not is_instance_valid(owner_player):
+		return
+	
 	var args = WeaponServiceExplodeArgs.new()
-	args.pos = _last_pos
-	args.damage = _get_damage(_player_index)
+	args.pos = _last_positions[player_index]
+	args.damage = _get_damage(player_index)
 	args.accuracy = 1.0
 	args.crit_chance = 0.03
 	args.crit_damage = 2.0
-	args.burning_data = WeaponService.init_burning_data(BurningData.new(), _player_index)
-	args.from_player_index = _player_index
-	args.from = _player
+	args.burning_data = WeaponService.init_burning_data(BurningData.new(), player_index)
+	args.from_player_index = player_index
+	args.from = owner_player
 	args.damage_tracking_key_hash = Utils.character_dr_ocean_scourge_hash
 	
 	WeaponService.explode(_current_exploding_effect, args)
 	
-	_last_pos = ZoneService.get_rand_pos()
+	_last_positions[player_index] = ZoneService.get_rand_pos()
 	var mark = mark_scene.instance()
 	mark.init(interval)
-	mark.global_position = _last_pos
+	mark.global_position = _last_positions[player_index]
 	_main.call_deferred("add_child", mark)
 
 

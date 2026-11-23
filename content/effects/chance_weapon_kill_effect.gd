@@ -50,29 +50,29 @@ func _on_desert_rose_wave_start(player) -> void:
 	for weapon_instance in player.current_weapons:
 		if weapon_instance is MeleeWeapon:
 			if weapon_type == Type.MELEE or weapon_type == Type.BOTH:
-				connect_safely(weapon_instance._hitbox, "killed_something", self, "_on_player_killed_something")
+				connect_safely(weapon_instance._hitbox, "killed_something", self, "_on_player_killed_something", [player.player_index])
 		elif weapon_instance is RangedWeapon:
 			if weapon_type == Type.RANGED or weapon_type == Type.BOTH:
-				connect_safely(weapon_instance._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot")
+				connect_safely(weapon_instance._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot", [player.player_index])
 
 
-func _on_player_projectile_shot(projectile) -> void:
+func _on_player_projectile_shot(projectile, player_index: int) -> void:
 	if is_instance_valid(projectile):
 		var hitbox = projectile._hitbox
 		
 		if hitbox and is_instance_valid(hitbox):
-			connect_safely(hitbox, "killed_something", self, "_on_player_killed_something")
+			connect_safely(hitbox, "killed_something", self, "_on_player_killed_something", [player_index])
 
 
-func _on_player_killed_something(_thing_killed) -> void:
+func _on_player_killed_something(_thing_killed, player_index: int) -> void:
 	if chance >= 1 or randf() < chance:
 		for stat in _stat_hashes:
 			if stat[0] == "materials":
-				RunData.add_gold(stat[2], _player_index)
+				RunData.add_gold(stat[2], player_index)
 				if _tracking_key_hash != 0:
-					RunData.add_tracked_value(_player_index, _tracking_key_hash, stat[2], 1)
+					RunData.add_tracked_value(player_index, _tracking_key_hash, stat[2], 1)
 			else:
-				RunData.add_stat(stat[1], stat[2], _player_index)
+				RunData.add_stat(stat[1], stat[2], player_index)
 
 
 func get_args(_player_index: int) -> Array:
