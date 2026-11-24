@@ -92,10 +92,9 @@ func deserialize_and_merge(effect: Dictionary) -> void:
 
 
 func get_args(_player_index: int) -> Array:
-	var scaling_text = "[color=#FF8C00]"
+	var stat_text = ""
 	for stat in stats_add:
-		scaling_text += "%d %s & " % [stat[1], tr(stat[0].to_upper())]
-	scaling_text = scaling_text.trim_suffix(" & ")
-	scaling_text += "[/color]"
+		var colored_text = get_colored_text_by_value(stat[1], 0, "+%d" if stat[1] >= 0 else "%d")
+		stat_text += "%s %s & " % [colored_text[0], get_colored_text_by_sign(tr(stat[0].to_upper()), colored_text[1])]
 	
-	return [scaling_text]
+	return [stat_text.trim_suffix(" & ")]

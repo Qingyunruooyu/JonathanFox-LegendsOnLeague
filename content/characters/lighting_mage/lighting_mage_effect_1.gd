@@ -50,12 +50,23 @@ func _on_desert_rose_wave_start(player) -> void:
 
 func get_args(player_index: int) -> Array:
 	var actual_chance = max(0, Utils.get_stat(Keys.stat_elemental_damage_hash, player_index) * 0.0035 + chance)
-	var chance_text = get_colored_text_by_value(actual_chance * 100.0, chance * 100.0, "%.1f")[0]
+	var chance_text = "%.1f" % (actual_chance * 100.0)
 	
 	var current_stats = WeaponService.init_ranged_stats(lighting_projectiles_stats, player_index)
 	var damage_text = current_stats.get_damage_text(lighting_projectiles_stats, player_index, [])
 	
-	return [chance_text, _get_scaling_text(player_index), damage_text, str(max_targets)]
+	return [chance_text, _get_scaling_text(player_index), damage_text, get_colored_text_by_value(max_targets, 0)[0]]
+
+
+func _add_custom_args() -> void:
+	var chance_arg = CustomArg.new()
+	chance_arg.arg_index = 0
+	chance_arg.arg_sign = Sign.FROM_ARG
+	custom_args.append(chance_arg)
+
+
+func _remove_custom_args() -> void:
+	custom_args.pop_back()
 
 
 func _get_scaling_text(_player_index: int) -> String:

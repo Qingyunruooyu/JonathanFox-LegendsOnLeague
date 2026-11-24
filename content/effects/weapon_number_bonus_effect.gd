@@ -74,4 +74,20 @@ func get_args(player_index: int) -> Array:
 	
 	var number = count_matching_weapons(player_index)
 	
-	return [filter_text, str(value), str(number * value)]
+	return [filter_text, str(value), tr(key.to_upper()), str(number * value)]
+
+
+func _add_custom_args() -> void:
+	var bonus_arg = CustomArg.new()
+	bonus_arg.arg_index = 1
+	bonus_arg.arg_sign = Sign.FROM_ARG
+	custom_args.append(bonus_arg)
+	var total_arg = CustomArg.new()
+	total_arg.arg_index = 3
+	total_arg.arg_sign = Sign.FROM_ARG
+	custom_args.append(total_arg)
+
+
+func _remove_custom_args() -> void:
+	custom_args.pop_back()
+	custom_args.pop_back()

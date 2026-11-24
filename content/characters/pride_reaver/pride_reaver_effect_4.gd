@@ -45,4 +45,4 @@ func get_args(_player_index: int) -> Array:
 		stat_text += "%s %s & " % [colored_text[0], get_colored_text_by_sign(tr(stat[0].to_upper()), colored_text[1])]
 	stat_text = stat_text.trim_suffix(" & ")
 	
-	return [stat_text, "%.1f" % duration]
+	return [stat_text, get_colored_text_by_value(duration, 0, "%.1f")[0]]

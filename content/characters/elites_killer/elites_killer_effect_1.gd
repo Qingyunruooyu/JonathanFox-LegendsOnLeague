@@ -3,6 +3,8 @@ extends "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/desert_
 
 var ELITE_WAVE_DATA = null
 
+const MAP_SIZE_DISPLAY: int = 67
+
 var _entity_spawner = null
 var _wave_ended = false
 var _elite_scenes = []
@@ -138,4 +140,4 @@ func check_boss() -> void:
 
 
 func get_args(_player_index: int) -> Array:
-	return []
+	return [get_colored_text_by_value(MAP_SIZE_DISPLAY, 0, "%d%%")[0]]

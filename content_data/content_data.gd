@@ -25,3 +25,5 @@ func add_resources():
 	ProgressData.refresh_active_update_data()
 	ProgressData._append_without_duplicates(ItemService.effects, effects)
 	RunData.init_tracked_items.merge(Utils.convert_dictionary_to_hash(tracked_items))
+	Text.keys_needing_operator.merge(translation_keys_needing_operator)
+	Text.keys_needing_percent.merge(translation_keys_needing_percent)

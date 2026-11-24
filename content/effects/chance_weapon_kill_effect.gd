@@ -90,3 +90,14 @@ func get_args(_player_index: int) -> Array:
 	stats_text = stats_text.trim_suffix(" [color=white]&[/color] ")
 	
 	return [type_text, "%.1f" % (chance * 100), stats_text]
+
+
+func _add_custom_args() -> void:
+	var chance_arg = CustomArg.new()
+	chance_arg.arg_index = 1
+	chance_arg.arg_sign = Sign.FROM_ARG
+	custom_args.append(chance_arg)
+
+
+func _remove_custom_args() -> void:
+	custom_args.pop_back()

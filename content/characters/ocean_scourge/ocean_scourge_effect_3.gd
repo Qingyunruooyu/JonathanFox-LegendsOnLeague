@@ -126,7 +126,7 @@ func _on_timer_timeout(player_index: int) -> void:
 
 
 func get_args(player_index: int) -> Array:
-	var interval_text = "%.1f" % interval
+	var interval_text = get_colored_text_by_value(interval, 0, "%.1f")[0]
 	
 	var damage = _get_damage(player_index)
 	var scaling_stats = []

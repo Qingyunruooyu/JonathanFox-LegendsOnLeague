@@ -31,7 +31,7 @@ tracked_items = {
 }
 translation_keys_needing_operator = {
 	"dr_effect_ranged_weapon_bonus": [ 0 ],
-	"dr_effect_weapon_number_bonus": [ 1, 2 ],
+	"dr_effect_weapon_number_bonus": [ 1, 3 ],
 }
 translation_keys_needing_percent = {
 	"dr_effect_character_lighting_mage": [ 0 ],
