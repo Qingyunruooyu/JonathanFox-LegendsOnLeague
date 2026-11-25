@@ -15,4 +15,4 @@ DR_EFFECT_CHARACTER_PRIDE_REAVER,"击杀[color=#FF8C00]新种类[/color]敌人�
 击杀头目后{1}并获得{2}点经验","Kill an enemy which you [color=#FF8C00]havent killed before[/color] will gain {0}
 Killing a Boss grants {1} and {2} XP"
 DR_EFFECT_CHARACTER_PRIDE_REAVER_2,受伤后获得{0}和[color=#FF8C00]短暂无敌[/color]，持续{1}s,When took damage you get {0} and [color=#FF8C00]brief invincibility[/color] for {1}s
-DR_EFFECT_RANGED_WEAPON_BONUS,当使用远战武器时{0}{1},{0} {1} with ranged weapons
+DR_EFFECT_MAX_RANGE_CAP,远程武器的攻击范围上限为{0},Ranged weapons' attack range is capped at {0}

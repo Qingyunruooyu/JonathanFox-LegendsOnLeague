@@ -8,13 +8,10 @@
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_mouth_appearance.tres" type="Resource" id=6]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_eyes_appearance.tres" type="Resource" id=7]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_head_appearance.tres" type="Resource" id=8]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_1.tres" type="Resource" id=9]
 [ext_resource path="res://weapons/melee/knife/1/knife_data.tres" type="Resource" id=10]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_8.tres" type="Resource" id=11]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_6.tres" type="Resource" id=12]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_7.tres" type="Resource" id=13]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_9.tres" type="Resource" id=14]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_4.tres" type="Resource" id=15]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_2.tres" type="Resource" id=16]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_3.tres" type="Resource" id=17]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_5.tres" type="Resource" id=18]
@@ -29,6 +26,9 @@
 [ext_resource path="res://weapons/melee/claw/1/claw_data.tres" type="Resource" id=27]
 [ext_resource path="res://weapons/melee/sharp_tooth/1/sharp_tooth_data.tres" type="Resource" id=28]
 [ext_resource path="res://weapons/ranged/carbon_bow/1/carbon_bow_1_data.tres" type="Resource" id=29]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_10.tres" type="Resource" id=30]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_11.tres" type="Resource" id=31]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/desert_rose/desert_rose_effect_12.tres" type="Resource" id=32]
 
 [resource]
 script = ExtResource( 2 )
@@ -39,7 +39,7 @@ icon = ExtResource( 1 )
 name = "CHARACTER_DR_DESERT_ROSE"
 tier = 0
 value = 1
-effects = [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 14 ) , ExtResource( 9 ), ExtResource( 13 ), ExtResource( 11 )]
+effects = [ ExtResource( 18 ), ExtResource( 32 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 11 ) ]
 tracking_text = "INTERCEPTED_PROJECTILES"
 max_nb = -1
 item_appearances = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ) ]

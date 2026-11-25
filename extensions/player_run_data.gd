@@ -10,6 +10,7 @@ static func init_effects() -> Dictionary:
 		Utils.dr_character_elites_killer_effect_hash: 0,
 		Utils.dr_character_pride_reaver_killed_hash: [],
 		Utils.dr_weapon_number_bonus_hash: [],
+		Utils.dr_max_range_cap_hash: Utils.LARGE_NUMBER,
 	}
 	
 	vanilla_effects.merge(mod_effects)
