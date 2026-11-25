@@ -3,9 +3,7 @@ CHARACTER_DR_DESERT_ROSE,炼狱玫瑰,Purgatory Rose
 DR_EFFECT_WEAPON_NUMBER_BONUS,每一{0}武器会{1}{2} [{3}],{1} {2} for every {0} weapons you have [{3}]
 DR_EFFECT_DESTROY_ENEMY_PROJECTILES,当近战武器攻击时会摧毁敌人的子弹,Melee Weapons will destroy enemies' projectiles
 CHARACTER_DR_ELITES_KILLER,精英战士,Elites Warrior
-DR_EFFECT_CHARACTER_ELITES_KILLER,"只会生成[color=#FF8C00]精英[/color]敌人
-地图大小恒定为{0}","Only [color=#FF8C00]elites[/color] will appear in a wave
-Map size is always {0}"
+DR_EFFECT_CHARACTER_ELITES_KILLER,只会生成[color=#FF8C00]精英[/color]敌人,Only [color=#FF8C00]elites[/color] will appear in a wave
 CHARACTER_DR_OCEAN_SCOURGE,海洋霸主,Ocean Sourge
 DR_EFFECT_CHARACTER_OCEAN_SCOURGE,每{0}秒在随机地点爆炸，造成{1}伤害,"Every {0} seconds will trigger one explosion at random position, dealing {1} damage"
 DR_EFFECT_CHANCE_WEAPON_KILL,当{0}击杀敌人时{1}概率获得{2},When killed an enemy by using {0} you have {1} chance to gain {2}

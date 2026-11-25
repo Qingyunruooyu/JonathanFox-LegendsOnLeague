@@ -3,8 +3,6 @@ extends "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/desert_
 
 var ELITE_WAVE_DATA = null
 
-const MAP_SIZE_DISPLAY: int = 67
-
 var _entity_spawner = null
 var _wave_ended = false
 var _elite_scenes = []
@@ -50,34 +48,6 @@ func _on_desert_rose_wave_start(player) -> void:
 	_entity_spawner.dr_elite_replace_chance = min(1.0, RunData.sum_all_player_effects(key_hash) / 100.0)
 	
 	spawn_elite()
-	check_map_size()
-
-
-func check_map_size() -> void:
-	if _main and is_instance_valid(_main):
-		var effects = RunData.get_player_effects(_player_index)
-		var map_size_coef = (1 + (effects[Keys.map_size_hash] / 100.0))
-		
-		if not map_size_coef == 0.67:
-			effects[Keys.map_size_hash] = -33
-			
-			var current_zone = ZoneService.get_zone_data(RunData.current_zone).duplicate()
-			current_zone.width = max(_main.MIN_MAP_SIZE, int(current_zone.width * 0.67))
-			current_zone.height = max(_main.MIN_MAP_SIZE, int(current_zone.height * 0.67))
-			
-			ZoneService.set_current_zone(current_zone)
-			_main._tile_map.clear()
-			_main._tile_map.init(current_zone)
-			for child in _main._tile_map_limits.get_children():
-				child.queue_free()
-			_main._tile_map_limits.init(current_zone)
-			
-			_entity_spawner._zone_min_pos = ZoneService.current_zone_min_position
-			_entity_spawner._zone_max_pos = ZoneService.current_zone_max_position
-			
-			var max_bounds = ZoneService.get_current_zone_rect().grow_individual(_main.EDGE_SIZE, _main.EDGE_SIZE * 2, _main.EDGE_SIZE, _main.EDGE_SIZE)
-			_main._camera.init(max_bounds, float(_main.EDGE_SIZE))
-			ZoneService.current_zone_max_camera_rect = _main._camera.get_max_camera_bounds()
 
 
 func _on_wave_timer_timeout() -> void:
@@ -140,4 +110,4 @@ func check_boss() -> void:
 
 
 func get_args(_player_index: int) -> Array:
-	return [get_colored_text_by_value(MAP_SIZE_DISPLAY, 0, "%d%%")[0]]
+	return []
