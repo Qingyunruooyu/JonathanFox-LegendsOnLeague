@@ -4,11 +4,10 @@ extends Node
 var _player = null
 var _player_index: int = 0
 var _main = null
-var _chance: float = 0.3
-var _max_targets: int = 3
+var _chance: float = 0.0
+var _max_targets: int = 0
 var _detact_scene = null
 var _stats_resource = null
-var _actual_chance: float = 0.3
 var _current_stats = null
 
 
@@ -43,7 +42,6 @@ func connect_safely(obj, signal_name: String, target, call_back: String) -> void
 
 
 func _refresh_stats() -> void:
-	_actual_chance = max(0, Utils.get_stat(Keys.stat_elemental_damage_hash, _player_index) * 0.0035 + _chance)
 	_current_stats = WeaponService.init_ranged_stats(_stats_resource, _player_index)
 	_current_stats.bounce = 0
 
@@ -62,7 +60,7 @@ func _on_player_projectile_shot(projectile) -> void:
 
 
 func _on_player_hit_something(thing_hit, _damage_dealt) -> void:
-	if randf() < _actual_chance:
+	if randf() < _chance:
 		var detact_area = _detact_scene.instance()
 		detact_area.init(_max_targets)
 		thing_hit.call_deferred("add_child", detact_area)

@@ -16,5 +16,5 @@ custom_args = [  ]
 enable_wave_start_signal = true
 detact_scene = ExtResource( 3 )
 lighting_projectiles_stats = ExtResource( 2 )
-chance = 0.3
+chance = 0.335
 max_targets = 3

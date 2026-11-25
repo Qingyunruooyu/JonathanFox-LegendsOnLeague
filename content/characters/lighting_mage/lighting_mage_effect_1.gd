@@ -3,7 +3,7 @@ extends "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/desert_
 
 export (PackedScene) var detact_scene: PackedScene
 export (Resource) var lighting_projectiles_stats
-export (float) var chance = 0.3
+export (float) var chance = 0.335
 export (int) var max_targets = 3
 
 const MONITOR_PATH = "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/lighting_mage/lighting_mage_monitor.gd"
@@ -49,13 +49,12 @@ func _on_desert_rose_wave_start(player) -> void:
 
 
 func get_args(player_index: int) -> Array:
-	var actual_chance = max(0, Utils.get_stat(Keys.stat_elemental_damage_hash, player_index) * 0.0035 + chance)
-	var chance_text = "%.1f" % (actual_chance * 100.0)
+	var chance_text = "%.1f" % (chance * 100.0)
 	
 	var current_stats = WeaponService.init_ranged_stats(lighting_projectiles_stats, player_index)
 	var damage_text = current_stats.get_damage_text(lighting_projectiles_stats, player_index, [])
 	
-	return [chance_text, _get_scaling_text(player_index), damage_text, get_colored_text_by_value(max_targets, 0)[0]]
+	return [chance_text, damage_text, get_colored_text_by_value(max_targets, 0)[0]]
 
 
 func _add_custom_args() -> void:
@@ -67,7 +66,3 @@ func _add_custom_args() -> void:
 
 func _remove_custom_args() -> void:
 	custom_args.pop_back()
-
-
-func _get_scaling_text(_player_index: int) -> String:
-	return Utils.get_scaling_stat_icon_text(Keys.stat_elemental_damage_hash, 0.35)
