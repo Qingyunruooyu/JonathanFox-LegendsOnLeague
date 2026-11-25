@@ -9,5 +9,5 @@ text_key = "DR_EFFECT_MAX_RANGE_CAP"
 value = 300
 custom_key = ""
 storage_method = 2
-effect_sign = 3
+effect_sign = 1
 custom_args = [  ]

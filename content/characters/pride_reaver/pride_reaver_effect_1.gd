@@ -120,6 +120,12 @@ func _get_stats_text(stats: Array) -> String:
 	var stat_text = ""
 	for stat in stats:
 		var colored_text = get_colored_text_by_value(stat[1], 0, "+%d" if stat[1] >= 0 else "%d")
-		stat_text += "%s %s & " % [colored_text[0], get_colored_text_by_sign(tr(stat[0].to_upper()), colored_text[1])]
-	
+		var value_text = colored_text[0]
+		var name_text = get_colored_text_by_sign(tr(stat[0].to_upper()), colored_text[1])
+		if stat[0] == "stat_evolution" and stat[1] != 0:
+			var evolution_color = Utils.get_evolution_color(stat[1]).to_html()
+			value_text = "[color=#%s]%d[/color]" % [evolution_color, stat[1]]
+			name_text = "[color=#%s]%s[/color]" % [evolution_color, tr(stat[0].to_upper())]
+		stat_text += "%s %s & " % [value_text, name_text]
+
 	return stat_text.trim_suffix(" & ")
