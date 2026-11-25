@@ -17,5 +17,5 @@ enable_wave_start_signal = true
 exploding_effect = ExtResource( 2 )
 mark_scene = ExtResource( 3 )
 interval = 5.0
-base_damage = 25
-stats_scaled = [ [ "stat_melee_damage", 1.0 ] ]
+base_damage = 20
+stats_scaled = [ [ "stat_elemental_damage", 1.0 ], [ "stat_melee_damage", 1.0 ], [ "stat_ranged_damage", 1.0 ] ]

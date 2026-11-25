@@ -7,7 +7,7 @@ DR_EFFECT_CHARACTER_ELITES_KILLER,只会生成[color=#FF8C00]精英[/color]敌�
 CHARACTER_DR_OCEAN_SCOURGE,海洋霸主,Ocean Sourge
 DR_EFFECT_CHARACTER_OCEAN_SCOURGE,每{0}秒在随机地点爆炸，造成{1}伤害,"Every {0} seconds will trigger one explosion at random position, dealing {1} damage"
 DR_EFFECT_CHANCE_WEAPON_KILL,当{0}击杀敌人时{1}概率获得{2},When killed an enemy by using {0} you have {1} chance to gain {2}
-DR_EFFECT_CHANCE_WEAPON_BURNING,当{0}攻击敌人时{1}概率点燃敌人,When hit an enemy by using {0} you have {1} chance to ignite the target
+DR_EFFECT_CHANCE_WEAPON_BURNING,当{0}攻击敌人时{1}概率点燃敌人，造成{2}燃烧伤害,"When hit an enemy by using {0} you have {1} chance to ignite the target, dealing {2} burning damage"
 CHARACTER_DR_LIGHING_MAGE,雷电法王,Lighting Mage
 DR_EFFECT_CHARACTER_LIGHTING_MAGE,你的攻击有{0}概率对命中目标施加[color=#FF8C00]雷电[/color]，雷电会弹射至附近最多{2}个目标，造成{1}伤害,Your weapons have a {0} chance to trigger [color=#FF8C00]Lightning[/color] on hit. The lightning spreads to up to {2} nearby targets and deals {1} damage
 CHARACTER_DR_PRIDE_REAVER,傲掠猎手,Pride Reaver

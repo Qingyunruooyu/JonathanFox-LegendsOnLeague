@@ -9,7 +9,7 @@ export (Array, Array) var stats_scaled = [["stat_max_hp", 0.5]]
 
 var _last_positions: Dictionary = {}
 var _current_exploding_effect = null
-var _stats_scaled_hashes = []
+var _damage_stats: WeaponStats = null
 var _players_by_pid: Dictionary = {}
 var _timers: Dictionary = {}
 
@@ -68,11 +68,9 @@ func _on_desert_rose_wave_start(_p_player) -> void:
 	
 	if _current_exploding_effect == null:
 		_current_exploding_effect = exploding_effect.duplicate()
-		_current_exploding_effect.scale = 1.5
-	
-	_stats_scaled_hashes.clear()
-	for stat in stats_scaled:
-		_stats_scaled_hashes.push_back([Keys.generate_hash(stat[0]), stat[1]])
+		_current_exploding_effect.scale = 1.0
+
+	_build_damage_stats()
 	
 	_players_by_pid[pid] = _p_player
 	
@@ -92,12 +90,17 @@ func _on_desert_rose_wave_start(_p_player) -> void:
 	_main.call_deferred("add_child", mark)
 
 
+func _build_damage_stats() -> void:
+	if _damage_stats == null:
+		_damage_stats = WeaponStats.new()
+	_damage_stats.damage = base_damage
+	_damage_stats.scaling_stats = Utils.convert_to_hash_array(stats_scaled)
+
+
 func _get_damage(player_index: int) -> int:
-	var damage = base_damage
-	for stat in _stats_scaled_hashes:
-		var stat_value = Utils.get_stat(stat[0], player_index)
-		damage += WeaponService.apply_damage_bonus(int(stat_value * stat[1]), player_index)
-	return int(max(1, damage * (Utils.get_stat(Keys.explosion_damage_hash, player_index) / 100.0 + 1.0)))
+	if _damage_stats == null:
+		_build_damage_stats()
+	return WeaponService.get_explosion_damage(_damage_stats, player_index)
 
 
 func _on_timer_timeout(player_index: int) -> void:
