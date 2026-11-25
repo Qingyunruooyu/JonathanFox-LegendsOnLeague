@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=25 format=2]
+[gd_resource type="Resource" load_steps=26 format=2]
 
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_1.tres" type="Resource" id=1]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_eyes.tres" type="Resource" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://weapons/melee/dagger/1/dagger_data.tres" type="Resource" id=11]
 [ext_resource path="res://weapons/ranged/shuriken/1/shuriken_data.tres" type="Resource" id=12]
 [ext_resource path="res://weapons/melee/knife/1/knife_data.tres" type="Resource" id=13]
-[ext_resource path="res://items/characters/character_data.gd" type="Script" id=14]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/character_data.gd" type="Script" id=14]
 [ext_resource path="res://weapons/melee/ghost_axe/1/ghost_axe_data.tres" type="Resource" id=15]
 [ext_resource path="res://weapons/melee/fist/1/fist_data.tres" type="Resource" id=18]
 [ext_resource path="res://weapons/melee/flail/1/flail_1_data.tres" type="Resource" id=19]
@@ -24,17 +24,19 @@
 [ext_resource path="res://weapons/melee/stick/1/stick_data.tres" type="Resource" id=24]
 [ext_resource path="res://weapons/melee/whip/1/whip_data.tres" type="Resource" id=25]
 [ext_resource path="res://weapons/ranged/carbon_bow/1/carbon_bow_1_data.tres" type="Resource" id=26]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_5.tres" type="Resource" id=27]
 
 [resource]
 script = ExtResource( 14 )
 my_id = "character_dr_pride_reaver"
 unlocked_by_default = true
 required_item_set = "jonathanfox_lol"
+dr_required_item_set = [ "primal_dread" ]
 icon = ExtResource( 3 )
 name = "CHARACTER_DR_PRIDE_REAVER"
 tier = 0
 value = 1
-effects = [ ExtResource( 1 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ]
+effects = [ ExtResource( 1 ), ExtResource( 27 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ]
 tracking_text = "STATS_GAINED"
 max_nb = -1
 item_appearances = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ]

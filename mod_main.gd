@@ -14,6 +14,7 @@ const EXTENSION_SCRIPTS = [
 	"main.gd",
 	"player.gd",
 	"entity_spawner.gd",
+	"item_service.gd",
 	"dlc_2_data.gd",
 ]
 

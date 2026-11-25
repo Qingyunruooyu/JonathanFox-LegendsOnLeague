@@ -1,6 +1,9 @@
 extends "res://items/characters/character_data.gd"
 
 
+export (Array, String) var dr_required_item_set = []
+
+
 func _get_tracking_text(player_index: int) -> String:
 	var text = ""
 	if player_index == RunData.DUMMY_PLAYER_INDEX:

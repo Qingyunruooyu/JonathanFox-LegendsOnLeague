@@ -14,7 +14,7 @@ CHARACTER_DR_LIGHING_MAGE,雷电法王,Lighting Mage
 DR_EFFECT_CHARACTER_LIGHTING_MAGE,你的攻击有{0}（{1}）概率对命中目标施加[color=#FF8C00]雷电[/color]，雷电会弹射至附近最多{3}个目标，造成{2}伤害,"Your weapons have a {0} chance ({1}) to trigger [color=#FF8C00]Lightning[/color] on hit. The lightning spreads to up to {3} nearby targets and deals {2} damage"
 CHARACTER_DR_PRIDE_REAVER,傲掠猎手,Pride Reaver
 DR_EFFECT_CHARACTER_PRIDE_REAVER,"击杀[color=#FF8C00]新种类[/color]敌人后{0}
-击杀头目后[color=#FF8C00]立刻升级[/color]","Kill an enemy which you [color=#FF8C00]havent killed before[/color] will gain {0}
-You get [color=#FF8C00]levelled up[/color] when killed a Boss"
+击杀头目后{1}并获得{2}点经验","Kill an enemy which you [color=#FF8C00]havent killed before[/color] will gain {0}
+Killing a Boss grants {1} and {2} XP"
 DR_EFFECT_CHARACTER_PRIDE_REAVER_2,受伤后获得{0}和[color=#FF8C00]短暂无敌[/color]，持续{1}s,When took damage you get {0} and [color=#FF8C00]brief invincibility[/color] for {1}s
 DR_EFFECT_RANGED_WEAPON_BONUS,当使用远战武器时{0}{1},{0} {1} with ranged weapons
