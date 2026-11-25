@@ -8,9 +8,9 @@ static func init_effects() -> Dictionary:
 	var vanilla_effects = .init_effects()
 	var mod_effects = {
 		Utils.dr_character_elites_killer_effect_hash: 0,
-		Utils.dr_character_pride_reaver_killed_hash: [],
 		Utils.dr_weapon_number_bonus_hash: [],
 		Utils.dr_max_range_cap_hash: Utils.LARGE_NUMBER,
+		Utils.dr_killed_enemies_hash: {},
 	}
 	
 	vanilla_effects.merge(mod_effects)
@@ -28,6 +28,6 @@ func serialize() -> Dictionary:
 func deserialize(data: Dictionary) -> PlayerRunData:
 	.deserialize(data)
 	
-	dr_weapon_number_records = data.dr_weapon_number_records.duplicate() if "dr_weapon_number_records" in data else []
+	dr_weapon_number_records = data.dr_weapon_number_records.duplicate()
 	
 	return self

@@ -33,16 +33,11 @@ func serialize() -> Dictionary:
 func deserialize_and_merge(serialized: Dictionary) -> void:
 	.deserialize_and_merge(serialized)
 
-	if serialized.has("dr_chance"):
-		chance = serialized.dr_chance
-	if serialized.has("dr_weapon_type"):
-		weapon_type = serialized.dr_weapon_type
-	if serialized.has("dr_burning_damage"):
-		burning_damage = serialized.dr_burning_damage
-	if serialized.has("dr_burning_duration"):
-		burning_duration = serialized.dr_burning_duration
-	if serialized.has("dr_stats_scaled"):
-		stats_scaled = serialized.dr_stats_scaled
+	chance = serialized.dr_chance
+	weapon_type = serialized.dr_weapon_type
+	burning_damage = serialized.dr_burning_damage
+	burning_duration = serialized.dr_burning_duration
+	stats_scaled = serialized.dr_stats_scaled
 
 
 func _on_desert_rose_wave_start(player) -> void:

@@ -34,12 +34,9 @@ func serialize() -> Dictionary:
 func deserialize_and_merge(serialized: Dictionary) -> void:
 	.deserialize_and_merge(serialized)
 	
-	if serialized.has("dr_filter"):
-		filter = serialized.dr_filter
-	if serialized.has("dr_set_id"):
-		set_id = serialized.dr_set_id
-	if serialized.has("dr_set_name"):
-		set_name = serialized.dr_set_name
+	filter = serialized.dr_filter
+	set_id = serialized.dr_set_id
+	set_name = serialized.dr_set_name
 
 
 func count_matching_weapons(player_index: int) -> int:

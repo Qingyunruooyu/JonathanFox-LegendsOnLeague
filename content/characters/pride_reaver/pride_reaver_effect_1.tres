@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 key = "dr_character_pride_reaver_killed"
 text_key = "DR_EFFECT_CHARACTER_PRIDE_REAVER"
-value = 0
+value = 1
 custom_key = ""
 storage_method = 0
 effect_sign = 3

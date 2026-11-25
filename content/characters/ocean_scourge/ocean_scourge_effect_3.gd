@@ -35,16 +35,11 @@ func serialize() -> Dictionary:
 func deserialize_and_merge(serialized: Dictionary) -> void:
 	.deserialize_and_merge(serialized)
 	
-	if serialized.has("dr_interval"):
-		interval = serialized.dr_interval
-	if serialized.has("dr_base_damage"):
-		base_damage = serialized.dr_base_damage
-	if serialized.has("dr_stats_scaled"):
-		stats_scaled = serialized.dr_stats_scaled
-	if serialized.has("dr_exploding_effect_path"):
-		exploding_effect = load(serialized.dr_exploding_effect_path)
-	if serialized.has("dr_mark_scene_path"):
-		mark_scene = load(serialized.dr_mark_scene_path)
+	interval = serialized.dr_interval
+	base_damage = serialized.dr_base_damage
+	stats_scaled = serialized.dr_stats_scaled
+	exploding_effect = load(serialized.dr_exploding_effect_path)
+	mark_scene = load(serialized.dr_mark_scene_path)
 
 
 func _on_owner_removed(player_index: int) -> void:

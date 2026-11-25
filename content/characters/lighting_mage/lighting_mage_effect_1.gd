@@ -29,14 +29,10 @@ func serialize() -> Dictionary:
 func deserialize_and_merge(serialized: Dictionary) -> void:
 	.deserialize_and_merge(serialized)
 	
-	if serialized.has("dr_chance"):
-		chance = serialized.dr_chance
-	if serialized.has("dr_max_targets"):
-		max_targets = serialized.dr_max_targets
-	if serialized.has("dr_detact_scene_path"):
-		detact_scene = load(serialized.dr_detact_scene_path)
-	if serialized.has("dr_stats_path"):
-		lighting_projectiles_stats = load(serialized.dr_stats_path)
+	chance = serialized.dr_chance
+	max_targets = serialized.dr_max_targets
+	detact_scene = load(serialized.dr_detact_scene_path)
+	lighting_projectiles_stats = load(serialized.dr_stats_path)
 
 
 func _on_desert_rose_wave_start(player) -> void:

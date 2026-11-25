@@ -23,10 +23,8 @@ func serialize() -> Dictionary:
 func deserialize_and_merge(serialized: Dictionary) -> void:
 	.deserialize_and_merge(serialized)
 	
-	if serialized.has("dr_duration"):
-		duration = serialized.dr_duration
-	if serialized.has("dr_bonus_stats"):
-		bonus_stats = serialized.dr_bonus_stats
+	duration = serialized.dr_duration
+	bonus_stats = serialized.dr_bonus_stats
 
 
 func _on_desert_rose_wave_start(player) -> void:

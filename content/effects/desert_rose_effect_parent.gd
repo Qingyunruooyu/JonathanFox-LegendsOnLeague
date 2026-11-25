@@ -27,8 +27,7 @@ func serialize() -> Dictionary:
 func deserialize_and_merge(serialized: Dictionary) -> void:
 	.deserialize_and_merge(serialized)
 	
-	if serialized.has("enable_wave_start_signal"):
-		enable_wave_start_signal = serialized.enable_wave_start_signal
+	enable_wave_start_signal = serialized.enable_wave_start_signal
 
 
 func apply(player_index: int) -> void:
