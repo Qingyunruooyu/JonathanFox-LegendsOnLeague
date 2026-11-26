@@ -11,7 +11,6 @@ const EXTENSION_SCRIPTS = [
 	"player_run_data.gd",
 	"progress_data.gd",
 	"run_data.gd",
-	"main.gd",
 	"player.gd",
 	"entity_spawner.gd",
 	"item_service.gd",
@@ -28,12 +27,3 @@ func _init():
 	
 	ModLoaderMod.add_translation(DR_TRANSLATION_DIR + "mod_translation.en.translation")
 	ModLoaderMod.add_translation(DR_TRANSLATION_DIR + "mod_translation.zh_Hans_CN.translation")
-
-
-func _ready():
-	ModLoaderLog.info("Done", MOD_NAME)
-	
-	var listener = load(MOD_PATH + "desert_rose_main_event_listener.gd")
-	listener = listener.new()
-	listener.name = "DesertRoseMainEventListener"
-	add_child(listener)

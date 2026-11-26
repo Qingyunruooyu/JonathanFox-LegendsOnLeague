@@ -44,6 +44,12 @@ func _on_desert_rose_wave_start(player) -> void:
 	player.call_deferred("add_child", monitor)
 
 
+func connect_weapon(weapon) -> void:
+	var monitor = _monitors.get(weapon.player_index)
+	if monitor != null and is_instance_valid(monitor):
+		monitor.connect_weapon(weapon)
+
+
 func get_args(player_index: int) -> Array:
 	var chance_text = "%.1f" % (chance * 100.0)
 	

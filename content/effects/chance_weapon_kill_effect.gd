@@ -45,14 +45,15 @@ func _on_desert_rose_wave_start(player) -> void:
 		_stat_hashes.push_back([stat[0], Keys.generate_hash(stat[0]), stat[1]])
 	
 	_tracking_key_hash = Keys.generate_hash(tracking_key) if tracking_key != "" else 0
-	
-	for weapon_instance in player.current_weapons:
-		if weapon_instance is MeleeWeapon:
-			if weapon_type == Type.MELEE or weapon_type == Type.BOTH:
-				connect_safely(weapon_instance._hitbox, "killed_something", self, "_on_player_killed_something", [player.player_index])
-		elif weapon_instance is RangedWeapon:
-			if weapon_type == Type.RANGED or weapon_type == Type.BOTH:
-				connect_safely(weapon_instance._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot", [player.player_index])
+
+
+func connect_weapon(weapon) -> void:
+	if weapon is MeleeWeapon:
+		if weapon_type == Type.MELEE or weapon_type == Type.BOTH:
+			connect_safely(weapon._hitbox, "killed_something", self, "_on_player_killed_something", [weapon.player_index])
+	elif weapon is RangedWeapon:
+		if weapon_type == Type.RANGED or weapon_type == Type.BOTH:
+			connect_safely(weapon._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot", [weapon.player_index])
 
 
 func _on_player_projectile_shot(projectile, player_index: int) -> void:

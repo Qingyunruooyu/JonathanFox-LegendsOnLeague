@@ -14,3 +14,9 @@ func _on_desert_rose_wave_start(player) -> void:
 	var monitor = load(MONITOR_PATH).new()
 	set_monitor(player.player_index, monitor)
 	player.call_deferred("add_child", monitor)
+
+
+func connect_weapon(weapon) -> void:
+	var monitor = _monitors.get(weapon.player_index)
+	if monitor != null and is_instance_valid(monitor):
+		monitor.connect_weapon(weapon)

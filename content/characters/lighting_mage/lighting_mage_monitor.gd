@@ -26,12 +26,16 @@ func _ready():
 	_refresh_stats()
 	
 	for weapon_instance in _player.current_weapons:
-		if weapon_instance is MeleeWeapon:
-			connect_safely(weapon_instance._hitbox, "hit_something", self, "_on_player_hit_something")
-		elif weapon_instance is RangedWeapon:
-			connect_safely(weapon_instance._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot")
+		connect_weapon(weapon_instance)
 	
 	connect_safely(RunData, "stats_updated", self, "_on_stats_updated")
+
+
+func connect_weapon(weapon) -> void:
+	if weapon is MeleeWeapon:
+		connect_safely(weapon._hitbox, "hit_something", self, "_on_player_hit_something")
+	elif weapon is RangedWeapon:
+		connect_safely(weapon._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot")
 
 
 func connect_safely(obj, signal_name: String, target, call_back: String) -> void:

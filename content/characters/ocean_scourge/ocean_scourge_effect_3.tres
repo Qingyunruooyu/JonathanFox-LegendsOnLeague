@@ -13,7 +13,6 @@ custom_key = ""
 storage_method = 0
 effect_sign = 3
 custom_args = [  ]
-enable_wave_start_signal = true
 exploding_effect = ExtResource( 2 )
 mark_scene = ExtResource( 3 )
 interval = 5.0

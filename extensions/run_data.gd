@@ -7,6 +7,14 @@ func resume_from_state(state: Dictionary) -> void:
 		update_item_related_effects(i)
 
 
+func unapply_item_effects(item_data, player_index: int) -> void:
+	.unapply_item_effects(item_data, player_index)
+
+	for effect in item_data.effects:
+		if effect.get_id().begins_with("dr_"):
+			effect.cleanup(player_index)
+
+
 func update_additional_weapon_bonuses(player_index: int) -> void:
 	.update_additional_weapon_bonuses(player_index)
 	

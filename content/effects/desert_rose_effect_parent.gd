@@ -1,10 +1,6 @@
 extends "res://items/global/effect.gd"
 
 
-export (bool) var enable_wave_start_signal = true
-
-var _player = null
-var _player_index: int = 0
 var _main = null
 var _owner_pids: Array = []
 var _wave_once: Dictionary = {}
@@ -14,20 +10,6 @@ var _monitors: Dictionary = {}
 
 static func get_id() -> String:
 	return "dr_effect"
-
-
-func serialize() -> Dictionary:
-	var serialized = .serialize()
-	
-	serialized.enable_wave_start_signal = enable_wave_start_signal
-	
-	return serialized
-
-
-func deserialize_and_merge(serialized: Dictionary) -> void:
-	.deserialize_and_merge(serialized)
-	
-	enable_wave_start_signal = serialized.enable_wave_start_signal
 
 
 func apply(player_index: int) -> void:
@@ -46,11 +28,6 @@ func cleanup(player_index: int) -> void:
 	if _owner_pids.empty():
 		_disconnect_all()
 		_wave_once.clear()
-		
-		if enable_wave_start_signal:
-			if RunData.is_connected("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix"):
-				RunData.disconnect("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix")
-		
 		_on_last_owner_removed()
 
 
@@ -74,15 +51,13 @@ func apply_connection(player) -> void:
 			if connection[0] == null or not is_instance_valid(connection[0]):
 				_connections_list.remove(i)
 	
-	_player = player
 	if player != null and is_instance_valid(player):
-		_player_index = player.player_index
-		if not _owner_pids.has(_player_index):
-			_owner_pids.push_back(_player_index)
-	
-	if enable_wave_start_signal:
-		if not RunData.is_connected("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix"):
-			RunData.connect("desert_rose_wave_start", self, "_on_desert_rose_wave_start_prefix")
+		if not _owner_pids.has(player.player_index):
+			_owner_pids.push_back(player.player_index)
+
+
+func connect_weapon(weapon) -> void:
+	pass
 
 
 func once_per_wave(key: String) -> bool:
@@ -109,20 +84,7 @@ func remove_monitor(player_index: int) -> void:
 	_monitors.erase(player_index)
 
 
-func _on_desert_rose_wave_start_prefix(player):
-	if player == null or not is_instance_valid(player):
-		return
-	if player.player_index != _player_index:
-		return
-	yield(RunData.get_tree().create_timer(0.1), "timeout")
-	
-	if player and is_instance_valid(player):
-		_on_desert_rose_wave_start(player)
-
-
 func _on_desert_rose_wave_start(player) -> void:
-	_player = player
-	_player_index = player.player_index
 	_main = RunData.get_tree().current_scene
 
 

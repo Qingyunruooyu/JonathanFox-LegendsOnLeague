@@ -9,14 +9,18 @@ func _ready():
 	_player = get_parent()
 	
 	for weapon in _player.current_weapons:
-		if weapon is MeleeWeapon:
-			var hitbox = weapon._hitbox
-			
-			if hitbox:
-				_hitboxes.push_back(hitbox)
-				hitbox.set_deferred("collision_mask", hitbox.collision_mask | 1 << 4)
-				hitbox.set_deferred("monitoring", true)
-				connect_safely(hitbox, "area_entered", self, "_on_area_entered")
+		connect_weapon(weapon)
+
+
+func connect_weapon(weapon) -> void:
+	if weapon is MeleeWeapon:
+		var hitbox = weapon._hitbox
+
+		if hitbox and not _hitboxes.has(hitbox):
+			_hitboxes.push_back(hitbox)
+			hitbox.set_deferred("collision_mask", hitbox.collision_mask | 1 << 4)
+			hitbox.set_deferred("monitoring", true)
+			connect_safely(hitbox, "area_entered", self, "_on_area_entered")
 
 
 func _exit_tree():

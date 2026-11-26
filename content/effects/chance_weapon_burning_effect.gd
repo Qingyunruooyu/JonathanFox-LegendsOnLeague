@@ -47,13 +47,14 @@ func _on_desert_rose_wave_start(player) -> void:
 	_refresh_burning_data(player.player_index)
 	connect_safely(RunData, "stats_updated", self, "_on_stats_updated")
 
-	for weapon_instance in player.current_weapons:
-		if weapon_instance is MeleeWeapon:
-			if weapon_type == Type.MELEE or weapon_type == Type.BOTH:
-				connect_safely(weapon_instance._hitbox, "hit_something", self, "_on_player_hit_something", [weapon_instance._hitbox])
-		elif weapon_instance is RangedWeapon:
-			if weapon_type == Type.RANGED or weapon_type == Type.BOTH:
-				connect_safely(weapon_instance._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot")
+
+func connect_weapon(weapon) -> void:
+	if weapon is MeleeWeapon:
+		if weapon_type == Type.MELEE or weapon_type == Type.BOTH:
+			connect_safely(weapon._hitbox, "hit_something", self, "_on_player_hit_something", [weapon._hitbox])
+	elif weapon is RangedWeapon:
+		if weapon_type == Type.RANGED or weapon_type == Type.BOTH:
+			connect_safely(weapon._shooting_behavior, "projectile_shot", self, "_on_player_projectile_shot")
 
 
 func _on_player_projectile_shot(projectile) -> void:

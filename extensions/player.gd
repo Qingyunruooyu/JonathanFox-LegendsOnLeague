@@ -1,6 +1,40 @@
 extends "res://entities/units/player/player.gd"
 
 
+func init(zone_min_pos: Vector2, zone_max_pos: Vector2, p_players_ref: Array = [], entity_spawner_ref = null) -> void:
+	.init(zone_min_pos, zone_max_pos, p_players_ref, entity_spawner_ref)
+
+	var _error = _entity_spawner_ref.connect("players_spawned", self, "_dr_on_players_spawned")
+
+
+func _dr_on_players_spawned(players: Array) -> void:
+	if not players.has(self):
+		return
+
+	for item in RunData.get_player_items(player_index):
+		for effect in item.effects:
+			if effect.get_id().begins_with("dr_"):
+				effect.apply_connection(self)
+				effect._on_desert_rose_wave_start(self)
+
+	for weapon in current_weapons:
+		for item in RunData.get_player_items(player_index):
+			for effect in item.effects:
+				if effect.get_id().begins_with("dr_"):
+					effect.connect_weapon(weapon)
+
+
+func add_weapon(weapon: WeaponData, pos: int) -> void:
+	.add_weapon(weapon, pos)
+
+	var instance = current_weapons.back()
+	if instance != null:
+		for item in RunData.get_player_items(player_index):
+			for effect in item.effects:
+				if effect.get_id().begins_with("dr_"):
+					effect.connect_weapon(instance)
+
+
 func apply_items_effects() -> void:
 	if _dr_check_character("dr_", player_index):
 		var player_appearances = RunData.players_data[player_index].appearances
