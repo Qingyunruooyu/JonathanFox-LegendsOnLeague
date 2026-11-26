@@ -11,7 +11,7 @@ export (int) var burning_duration = 2
 export (Array, Array) var stats_scaled = [["stat_melee_damage", 0.75], ["stat_crit_chance", 0.75]]
 
 var _base_burning_data: BurningData = null
-var _burning_data: BurningData = null
+var _burning_data_by_pid: Dictionary = {}
 
 
 static func get_id() -> String:
@@ -44,7 +44,7 @@ func _on_desert_rose_wave_start(player) -> void:
 	._on_desert_rose_wave_start(player)
 
 	_build_base_burning_data()
-	_refresh_burning_data()
+	_refresh_burning_data(player.player_index)
 	connect_safely(RunData, "stats_updated", self, "_on_stats_updated")
 
 	for weapon_instance in player.current_weapons:
@@ -65,18 +65,25 @@ func _on_player_projectile_shot(projectile) -> void:
 
 
 func _on_stats_updated(player_index) -> void:
-	if player_index == _player_index:
-		_refresh_burning_data()
+	if _owner_pids.has(player_index):
+		_refresh_burning_data(player_index)
 
 
 func _on_player_hit_something(_thing_hit, _damage_dealt, source_hitbox) -> void:
 	if chance >= 1 or randf() < chance:
 		if not _thing_hit.dead:
-			if _burning_data == null:
-				_refresh_burning_data()
-			_burning_data.from = source_hitbox.from
+			var player_index: int = source_hitbox.from.player_index
+			var burning_data = _burning_data_by_pid.get(player_index)
+			if burning_data == null:
+				burning_data = _refresh_burning_data(player_index)
+			burning_data.from = source_hitbox.from
 
-			_thing_hit.apply_burning(_burning_data)
+			_thing_hit.apply_burning(burning_data)
+
+
+func cleanup(player_index: int) -> void:
+	_burning_data_by_pid.erase(player_index)
+	.cleanup(player_index)
 
 
 func _build_base_burning_data() -> void:
@@ -91,9 +98,11 @@ func _build_base_burning_data() -> void:
 	_base_burning_data = burning_data
 
 
-func _refresh_burning_data() -> void:
+func _refresh_burning_data(player_index: int) -> BurningData:
 	_build_base_burning_data()
-	_burning_data = WeaponService.init_burning_data(_base_burning_data, _player_index)
+	var burning_data: BurningData = WeaponService.init_burning_data(_base_burning_data, player_index)
+	_burning_data_by_pid[player_index] = burning_data
+	return burning_data
 
 
 func get_args(player_index: int) -> Array:

@@ -32,7 +32,7 @@ func _scale_copied_effect(effect, player_index: int) -> void:
 		"dr_chance_weapon_burning":
 			effect.burning_damage = int(ceil(effect.burning_damage * scale))
 			effect._base_burning_data = null
-			effect._burning_data = null
+			effect._burning_data_by_pid = {}
 		"dr_chance_weapon_kill":
 			effect.chance = max(0.01, ceil(stepify(effect.chance * scale * 100.0, 0.001)) / 100.0)
 		"dr_ocean_scourge_explosion":

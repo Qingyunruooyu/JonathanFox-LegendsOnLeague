@@ -41,7 +41,15 @@ func _on_desert_rose_wave_start(player) -> void:
 	
 	_elite_scenes.clear()
 	var zone_data = ZoneService.get_zone_data(RunData.current_zone)
-	for elite in zone_data.elites:
+	var elites = zone_data.elites
+	if ZoneService.has_evolved_elites(RunData.current_zone):
+		var team = TeamEvolution.new()
+		if team.has_any_camp() and Utils.get_chance_success(team.elite_chance):
+			var camp = EliteCamp.MECA if team.draw_is_meca() else EliteCamp.MUTANT
+			var camp_elites = ZoneService.get_elites_by_camp(RunData.current_zone, camp)
+			if not camp_elites.empty():
+				elites = camp_elites
+	for elite in elites:
 		_elite_scenes.push_back(elite.scene)
 	
 	_entity_spawner.dr_elite_scenes = _elite_scenes
