@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=22 format=2]
+[gd_resource type="Resource" load_steps=20 format=2]
 
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_1.tres" type="Resource" id=1]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_eyes.tres" type="Resource" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_hat.tres" type="Resource" id=4]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/dr_pride_reaver_mouth.tres" type="Resource" id=5]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_3.tres" type="Resource" id=6]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_2.tres" type="Resource" id=7]
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_4.tres" type="Resource" id=8]
 [ext_resource path="res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres" type="Resource" id=9]
 [ext_resource path="res://weapons/melee/dagger/1/dagger_data.tres" type="Resource" id=11]
@@ -15,7 +14,7 @@
 [ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/character_data.gd" type="Script" id=14]
 [ext_resource path="res://weapons/melee/scissors/1/scissors_data.tres" type="Resource" id=22]
 [ext_resource path="res://weapons/ranged/carbon_bow/1/carbon_bow_1_data.tres" type="Resource" id=26]
-[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_5.tres" type="Resource" id=27]
+[ext_resource path="res://mods-unpacked/JonathanFox-LegendsOnLeague/content/characters/pride_reaver/pride_reaver_effect_6.tres" type="Resource" id=27]
 [ext_resource path="res://weapons/ranged/blowgun/1/blowgun_data.tres" type="Resource" id=28]
 [ext_resource path="res://weapons/ranged/icicle/1/icicle_data.tres" type="Resource" id=29]
 [ext_resource path="res://weapons/ranged/crossbow/1/crossbow_data.tres" type="Resource" id=30]
@@ -32,7 +31,7 @@ icon = ExtResource( 3 )
 name = "CHARACTER_DR_PRIDE_REAVER"
 tier = 0
 value = 1
-effects = [ ExtResource( 1 ), ExtResource( 27 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ]
+effects = [ ExtResource( 1 ), ExtResource( 27 ), ExtResource( 8 ), ExtResource( 6 ) ]
 tracking_text = "STATS_GAINED"
 max_nb = -1
 item_appearances = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ]

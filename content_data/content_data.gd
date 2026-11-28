@@ -13,6 +13,8 @@ export (Array, Resource) var challenges = []
 
 export (Dictionary) var tracked_items = {}
 
+export (Array, String) var effect_keys_full_serialization = []
+
 export (Dictionary) var translation_keys_needing_operator = {}
 export (Dictionary) var translation_keys_needing_percent = {}
 
@@ -25,5 +27,6 @@ func add_resources():
 	ProgressData.refresh_active_update_data()
 	ProgressData._append_without_duplicates(ItemService.effects, effects)
 	RunData.init_tracked_items.merge(Utils.convert_dictionary_to_hash(tracked_items))
+	ProgressData._append_without_duplicates(RunData.effect_keys_full_serialization, Utils.convert_to_hash_array(effect_keys_full_serialization))
 	Text.keys_needing_operator.merge(translation_keys_needing_operator)
 	Text.keys_needing_percent.merge(translation_keys_needing_percent)

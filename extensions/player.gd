@@ -11,17 +11,17 @@ func _dr_on_players_spawned(players: Array) -> void:
 	if not players.has(self):
 		return
 
+	var dr_effects = []
 	for item in RunData.get_player_items(player_index):
 		for effect in item.effects:
 			if effect.get_id().begins_with("dr_"):
 				effect.apply_connection(self)
 				effect._on_desert_rose_wave_start(self)
+				dr_effects.push_back(effect)
 
 	for weapon in current_weapons:
-		for item in RunData.get_player_items(player_index):
-			for effect in item.effects:
-				if effect.get_id().begins_with("dr_"):
-					effect.connect_weapon(weapon)
+		for effect in dr_effects:
+			effect.connect_weapon(weapon)
 
 
 func add_weapon(weapon: WeaponData, pos: int) -> void:

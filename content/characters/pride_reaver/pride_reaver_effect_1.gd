@@ -1,9 +1,11 @@
 extends "res://mods-unpacked/JonathanFox-LegendsOnLeague/content/effects/desert_rose_effect_parent.gd"
 
 
-export (Array, Array) var stats_add = [["stat_melee_damage", 5]]
-export (Array, Array) var boss_stats_add = [["stat_evolution", -20]]
-export (int) var boss_xp = 100
+export (Array, Array) var stats_add = [["stat_melee_damage", 4]]
+export (Array, Array) var mutant_stats_add = [["stat_melee_damage", 2]]
+export (int) var elite_xp = 100
+export (int) var meca_xp = 500
+export (int) var meca_parts = 1
 
 
 static func get_id() -> String:
@@ -11,16 +13,16 @@ static func get_id() -> String:
 
 
 func apply(player_index: int) -> void:
-	pass
+	RunData.get_player_effects(player_index)[Utils.dr_pride_reaver_handbook_hash].push_back(self)
 
 
 func unapply(player_index: int) -> void:
-	pass
+	RunData.get_player_effects(player_index)[Utils.dr_pride_reaver_handbook_hash].erase(self)
 
 
 func _on_desert_rose_wave_start(player) -> void:
 	._on_desert_rose_wave_start(player)
-	
+
 	connect_safely(_main._entity_spawner, "enemy_spawned", self, "_on_enemy_spawned")
 
 
@@ -36,64 +38,69 @@ func _on_enemy_died(enemy, _args) -> void:
 		var killed = RunData.get_player_effect(Utils.dr_killed_enemies_hash, pid)
 		if not killed.has(enemy.enemy_id_hash):
 			killed[enemy.enemy_id_hash] = 1
-			
-			for item in RunData.get_player_items(pid):
-				for effect in item.effects:
-					if effect.get_id() == "dr_pride_reaver_handbook":
-						_dr_add_stats(effect.stats_add, pid)
-	
-	if enemy is Boss:
-		for pid in _owner_pids:
-			_dr_add_stats(boss_stats_add, pid)
-			RunData.add_xp(boss_xp, pid)
 
-	if enemy is Boss:
-		for pid in _owner_pids:
-			_dr_add_stats(boss_stats_add, pid)
-			RunData.add_xp(boss_xp, pid)
+			for handbook in RunData.get_player_effect(Utils.dr_pride_reaver_handbook_hash, pid):
+				_dr_add_stats(handbook.stats_add, pid)
+
+		if enemy._is_mutant:
+			var killed_mutant = RunData.get_player_effect(Utils.dr_killed_mutant_enemies_hash, pid)
+			if not killed_mutant.has(enemy.enemy_id_hash):
+				killed_mutant[enemy.enemy_id_hash] = 1
+
+				for handbook in RunData.get_player_effect(Utils.dr_pride_reaver_handbook_hash, pid):
+					_dr_add_stats(handbook.mutant_stats_add, pid)
+
+		if enemy is Boss:
+			RunData.add_xp(elite_xp, pid)
+
+			if enemy._is_meca:
+				RunData.add_xp(meca_xp, pid)
+				RunData.add_meca_parts(meca_parts, pid)
 
 
 func _dr_add_stats(stats: Array, pid: int) -> void:
 	for stat in stats:
 		RunData.add_stat(Keys.generate_hash(stat[0]), stat[1], pid)
-		var tracked_value = stat[1]
-		if stat[0] == "stat_evolution":
-			tracked_value = abs(tracked_value)
-		RunData.add_tracked_value(pid, Utils.character_dr_pride_reaver_hash, tracked_value)
+		RunData.add_tracked_value(pid, Utils.character_dr_pride_reaver_hash, stat[1])
 
 
 func serialize() -> Dictionary:
 	var serialized = .serialize()
-	
+
 	serialized.dr_stats_add = stats_add
-	serialized.dr_boss_stats_add = boss_stats_add
-	serialized.dr_boss_xp = boss_xp
-	
+	serialized.dr_mutant_stats_add = mutant_stats_add
+	serialized.dr_elite_xp = elite_xp
+	serialized.dr_meca_xp = meca_xp
+	serialized.dr_meca_parts = meca_parts
+
 	return serialized
 
 
 func deserialize_and_merge(effect: Dictionary) -> void:
 	.deserialize_and_merge(effect)
-	
-	stats_add = effect.dr_stats_add
-	boss_stats_add = effect.dr_boss_stats_add
-	boss_xp = effect.dr_boss_xp
+
+	stats_add = effect.get("dr_stats_add", stats_add)
+	mutant_stats_add = effect.get("dr_mutant_stats_add", mutant_stats_add)
+	elite_xp = effect.get("dr_elite_xp", elite_xp)
+	meca_xp = effect.get("dr_meca_xp", meca_xp)
+	meca_parts = effect.get("dr_meca_parts", meca_parts)
 
 
 func get_args(_player_index: int) -> Array:
-	return [_get_stats_text(stats_add), _get_stats_text(boss_stats_add), get_colored_text_by_value(boss_xp, 0, "%d")[0]]
+	return [
+		_get_stats_text(stats_add),
+		_get_stats_text(mutant_stats_add),
+		get_colored_text_by_value(elite_xp, 0, "%d")[0],
+		get_colored_text_by_value(meca_xp, 0, "%d")[0],
+		get_colored_text_by_value(meca_parts, 0, "%d")[0]
+	]
 
 
 func _get_stats_text(stats: Array) -> String:
 	var stat_text = ""
 	for stat in stats:
 		var colored_text = get_colored_text_by_value(stat[1], 0, "+%d" if stat[1] >= 0 else "%d")
-		var value_text = colored_text[0]
 		var name_text = get_colored_text_by_sign(tr(stat[0].to_upper()), colored_text[1])
-		if stat[0] == "stat_evolution" and stat[1] != 0:
-			var evolution_color = Utils.get_evolution_color(stat[1]).to_html()
-			value_text = "[color=#%s]%d[/color]" % [evolution_color, stat[1]]
-			name_text = "[color=#%s]%s[/color]" % [evolution_color, tr(stat[0].to_upper())]
-		stat_text += "%s %s & " % [value_text, name_text]
+		stat_text += "%s %s & " % [colored_text[0], name_text]
 
 	return stat_text.trim_suffix(" & ")

@@ -41,8 +41,10 @@ func _scale_copied_effect(effect, player_index: int) -> void:
 			effect._current_exploding_effect = null
 		"dr_pride_reaver_handbook":
 			effect.stats_add = _dr_scale_stats(effect.stats_add, scale)
-			effect.boss_stats_add = _dr_scale_stats(effect.boss_stats_add, scale)
-			effect.boss_xp = int(ceil(effect.boss_xp * scale))
+			effect.mutant_stats_add = _dr_scale_stats(effect.mutant_stats_add, scale)
+			effect.elite_xp = int(ceil(effect.elite_xp * scale))
+			effect.meca_xp = int(ceil(effect.meca_xp * scale))
+			effect.meca_parts = max(1, int(ceil(effect.meca_parts * scale)))
 
 
 func _dr_scale_stats(stats: Array, scale: float) -> Array:

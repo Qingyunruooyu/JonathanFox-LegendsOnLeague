@@ -29,6 +29,7 @@ tracked_items = {
 "character_dr_ocean_scourge": [ 0, 0 ],
 "character_dr_pride_reaver": 0
 }
+effect_keys_full_serialization = [ "dr_pride_reaver_handbook" ]
 translation_keys_needing_operator = {
 	"dr_effect_weapon_number_bonus": [ 1, 3 ],
 }

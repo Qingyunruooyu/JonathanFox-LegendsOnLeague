@@ -11,5 +11,5 @@ custom_key = ""
 storage_method = 0
 effect_sign = 3
 custom_args = [  ]
-duration = 0.75
+duration = 0.67
 bonus_stats = [ [ "stat_speed", 50 ] ]
