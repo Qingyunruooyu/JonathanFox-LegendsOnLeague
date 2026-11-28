@@ -6,8 +6,8 @@ enum Type {MELEE, RANGED, BOTH}
 
 export (float) var chance = 1.0
 export (Type) var weapon_type = Type.BOTH
-export (int) var burning_damage = 4
-export (int) var burning_duration = 2
+export (int) var burning_damage = 2
+export (int) var burning_duration = 4
 export (Array, Array) var stats_scaled = [["stat_melee_damage", 0.75], ["stat_crit_chance", 0.75]]
 
 var _base_burning_data: BurningData = null
@@ -118,7 +118,7 @@ func get_args(player_index: int) -> Array:
 	_build_base_burning_data()
 	var current_burning_data = WeaponService.init_burning_data(_base_burning_data, player_index)
 	var scaling_text = WeaponService.get_scaling_stats_icon_text(current_burning_data.scaling_stats)
-	var damage_text = "%s*%d (%s)" % [get_colored_text_by_value(current_burning_data.damage, burning_damage)[0], current_burning_data.duration, scaling_text]
+	var damage_text = "%dX%s (%s)" % [current_burning_data.duration, get_colored_text_by_value(current_burning_data.damage, burning_damage)[0], scaling_text]
 
 	return [type_text, "%.1f" % (chance * 100), damage_text]
 
